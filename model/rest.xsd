@@ -1,0 +1,1586 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AuthToken" type="authToken"/>
+
+  <xs:element name="AuthTokenRequest" type="authTokenRequest"/>
+
+  <xs:element name="AuthenticationRequest" type="authenticationRequest"/>
+
+  <xs:element name="AuthenticationRequestKey" type="authenticationRequestKey"/>
+
+  <xs:element name="BalanceInquiry" type="balanceInquiry"/>
+
+  <xs:element name="BalanceInquiryResponse" type="balanceInquiryResponse"/>
+
+  <xs:element name="CardAccountSummary" type="cardAccountSummary"/>
+
+  <xs:element name="CardTypeInfo" type="cardTypeInfo"/>
+
+  <xs:element name="CardTypeInfoRequest" type="cardTypeInfoRequest"/>
+
+  <xs:element name="CloseBatchRequest" type="closeBatchRequest"/>
+
+  <xs:element name="CloseBatchResponse" type="closeBatchResponse"/>
+
+  <xs:element name="ConfigurationRequest" type="configurationRequest"/>
+
+  <xs:element name="CustomField" type="customField"/>
+
+  <xs:element name="EMVTag" type="emvTag"/>
+
+  <xs:element name="PayconexTransactionData" type="payconexTransactionData"/>
+
+  <xs:element name="Refund" type="refund"/>
+
+  <xs:element name="Response" type="response"/>
+
+  <xs:element name="Reversal" type="reversal"/>
+
+  <xs:element name="Sale" type="sale"/>
+
+  <xs:element name="SecureCard" type="secureCard"/>
+
+  <xs:element name="SecureCardRegisterResponse" type="secureCardRegisterRestResponse"/>
+
+  <xs:element name="SecureCardRemoveResponse" type="secureCardRemoveRestResponse"/>
+
+  <xs:element name="SecureCardResponse" type="secureCardRestResponse"/>
+
+  <xs:element name="ServiceError" type="serviceError"/>
+
+  <xs:element name="TerminalAPIKey" type="terminalAPIKey"/>
+
+  <xs:element name="TerminalConfiguration" type="terminalConfiguration"/>
+
+  <xs:element name="TerminalTax" type="terminalTax"/>
+
+  <xs:element name="TerminalTip" type="terminalTip"/>
+
+  <xs:element name="TerminalUpdate" type="terminalUpdate"/>
+
+  <xs:element name="TerminalUpdateResponse" type="terminalUpdateResponse"/>
+
+  <xs:element name="Tip" type="tip"/>
+
+  <xs:element name="TransactionList" type="transactionList"/>
+
+  <xs:element name="TransactionReport" type="transactionReport"/>
+
+  <xs:element name="TransactionResponse" type="transactionResponse"/>
+
+  <xs:element name="TransactionUpdate" type="transactionUpdate"/>
+
+  <xs:element name="UId" type="uId"/>
+
+  <xs:element name="ValidationError" type="validationError"/>
+
+  <xs:element name="application" type="application"/>
+
+  <xs:element name="caCertificate" type="caCertificate"/>
+
+  <xs:element name="paymentTypeTerminalConfiguration" type="paymentTypeTerminalConfiguration"/>
+
+  <xs:element name="referenced" type="refundReferenced"/>
+
+  <xs:element name="tipAdjustment" type="tipAdjustment"/>
+
+  <xs:element name="unreferenced" type="refundUnreferenced"/>
+
+  <xs:complexType name="secureCardRestResponse">
+    <xs:complexContent>
+      <xs:extension base="response">
+        <xs:sequence>
+          <xs:element name="secureCard" type="secureCard" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="response">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string"/>
+          <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="protectedMethod">
+    <xs:sequence>
+      <xs:element name="dateTime" type="xs:dateTime"/>
+      <xs:element name="hash" type="hash"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="secureCard">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="cardEntryMode" type="cardEntryMode" minOccurs="0"/>
+          <xs:element name="cardReference" type="xs:string" minOccurs="0"/>
+          <xs:element name="customFields" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="customField" type="customField" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="customer" type="customer" minOccurs="0"/>
+          <xs:element name="device" type="posDevice" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+          <xs:element name="issueNo" type="xs:string" minOccurs="0"/>
+          <xs:element name="merchantReference" type="xs:string"/>
+          <xs:element name="permittedTerminals" type="xs:string" minOccurs="0"/>
+          <xs:element name="terminalId" type="xs:string"/>
+          <xs:element name="tokenMethod" type="tokenMethod" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customField">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="eMail" type="xs:string" minOccurs="0"/>
+      <xs:element name="ipAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="mobileNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="region" type="xs:string" minOccurs="0"/>
+      <xs:element name="signature" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="posDevice">
+    <xs:sequence>
+      <xs:element name="serialNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tokenMethod">
+    <xs:complexContent>
+      <xs:extension base="baseMethod">
+        <xs:choice>
+          <xs:element name="keyedSecureCard" type="keyedSecureCard"/>
+          <xs:element name="keyedAsTrack2" type="keyedAsTrackData"/>
+          <xs:element name="keyedEncrypted" type="keyedEncrypted"/>
+          <xs:element name="trackSecureCard" type="trackData"/>
+          <xs:element name="emvSecureCard" type="emv"/>
+          <xs:element name="emvTlvSecureCard" type="emvtlv"/>
+        </xs:choice>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="baseMethod" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="keyedSecureCard">
+    <xs:sequence>
+      <xs:element name="cardCvv" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardNumber" type="xs:string"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="expiryDate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="keyedAsTrackData">
+    <xs:sequence>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="encryptedData" type="xs:string"/>
+      <xs:element name="firstDigitOfPan" type="xs:string" minOccurs="0"/>
+      <xs:element name="ksn" type="xs:string" minOccurs="0"/>
+      <xs:element name="pinDetails" type="pinDetails" minOccurs="0"/>
+      <xs:element name="serial" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pinDetails">
+    <xs:sequence>
+      <xs:element name="dukptPinDetails" type="dukptPinDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dukptPinDetails">
+    <xs:sequence>
+      <xs:element name="pin" type="xs:string"/>
+      <xs:element name="pinKsn" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="keyedEncrypted">
+    <xs:sequence>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="cvv" type="xs:string" minOccurs="0"/>
+      <xs:element name="cvvEncrypted" type="xs:string" minOccurs="0"/>
+      <xs:element name="expiryDate" type="xs:string"/>
+      <xs:element name="ksn" type="xs:string"/>
+      <xs:element name="panEncrypted" type="xs:string"/>
+      <xs:element name="panMasked" type="xs:string"/>
+      <xs:element name="pinDetails" type="pinDetails" minOccurs="0"/>
+      <xs:element name="serial" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackData">
+    <xs:sequence>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="encryptedData" type="xs:string"/>
+      <xs:element name="fallback" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="fallbackReason" type="fallbackReason" minOccurs="0"/>
+      <xs:element name="firstDigitOfPan" type="xs:string" minOccurs="0"/>
+      <xs:element name="ksn" type="xs:string"/>
+      <xs:element name="pinDetails" type="pinDetails" minOccurs="0"/>
+      <xs:element name="serial" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emv">
+    <xs:sequence>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="contactless" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="emvTags" type="emvTag" maxOccurs="unbounded"/>
+      <xs:element name="firstDigitOfPan" type="xs:string" minOccurs="0"/>
+      <xs:element name="ksn" type="xs:string"/>
+      <xs:element name="serial" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emvTag">
+    <xs:sequence>
+      <xs:element name="decimal" type="xs:int"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="hex" type="xs:string" minOccurs="0"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emvtlv">
+    <xs:sequence>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="contactless" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="firstDigitOfPan" type="xs:string" minOccurs="0"/>
+      <xs:element name="ksn" type="xs:string" minOccurs="0"/>
+      <xs:element name="serial" type="xs:string" minOccurs="0"/>
+      <xs:element name="tlvString" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hash">
+    <xs:sequence>
+      <xs:element name="messageDigestAlgorithm" type="messageDigestAlgorithm"/>
+      <xs:element name="digest" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authToken">
+    <xs:complexContent>
+      <xs:extension base="standardKey">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="standardKey">
+    <xs:sequence>
+      <xs:element name="key" type="xs:string" minOccurs="0"/>
+      <xs:element name="validUntil" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalConfiguration">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="allowCardholderSignatureBypass" type="xs:boolean"/>
+          <xs:element name="allowKeyed" type="xs:boolean"/>
+          <xs:element name="allowMsrFallback" type="xs:boolean"/>
+          <xs:element name="allowSurcharges" type="xs:boolean"/>
+          <xs:element name="allowSurchargesForMobile" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="allowSurchargesForVT" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="allowTax" type="xs:boolean"/>
+          <xs:element name="allowTip" type="xs:boolean"/>
+          <xs:element name="allowUnreferenced" type="xs:boolean"/>
+          <xs:element name="applications" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="application" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="avsCompulsory" type="xs:boolean"/>
+          <xs:element name="avsEnabled" type="xs:boolean"/>
+          <xs:element name="caCertificates" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="caCertificate" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="currencies" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="currency" type="currency" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="emvTags" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="emvTag" type="emvTag" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="enableAutomaticSettle" type="xs:boolean"/>
+          <xs:element name="enableCardHolderReceipt" type="xs:boolean"/>
+          <xs:element name="forceSecureCardValidation" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="merchantDetails" type="merchantDetails"/>
+          <xs:element name="revokedCaCertificates" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="revokedCaCertificate" type="caCertificate" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="surchargePercentage" type="xs:double" minOccurs="0"/>
+          <xs:element name="terminalTaxes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="terminalTax" type="terminalTax" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="terminalTips" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="terminalTip" type="terminalTip" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="validateSecureCardSecurity" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="application">
+    <xs:sequence>
+      <xs:element name="applicationMatchType" type="applicationMatchType" minOccurs="0"/>
+      <xs:element name="card" type="xs:string" minOccurs="0"/>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="caCertificate">
+    <xs:sequence>
+      <xs:element name="certificate" type="xs:string" minOccurs="0"/>
+      <xs:element name="exponent" type="xs:string" minOccurs="0"/>
+      <xs:element name="rid" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="merchantDetails">
+    <xs:sequence>
+      <xs:element name="address1" type="xs:string" minOccurs="0"/>
+      <xs:element name="address2" type="xs:string" minOccurs="0"/>
+      <xs:element name="address3" type="xs:string" minOccurs="0"/>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalTax">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="percentage" type="xs:decimal"/>
+      <xs:element name="uid" type="uId" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="uId">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="terminalTip">
+    <xs:sequence>
+      <xs:element name="amount" type="amount" minOccurs="0"/>
+      <xs:element name="percentage" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipType" type="tipType"/>
+      <xs:element name="uid" type="uId" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="amount">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="cashBackAmount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="currency" type="currency"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reversal">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="customer" type="customer" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string"/>
+          <xs:element name="previousTxnDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="reason" type="xs:string" minOccurs="0"/>
+          <xs:element name="tlvString" type="xs:string" minOccurs="0"/>
+          <xs:choice>
+            <xs:element name="orderId" type="orderId"/>
+            <xs:element name="uniqueRef" type="uniqueRef"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="account">
+    <xs:sequence>
+      <xs:element name="deviceId" type="xs:string" minOccurs="0"/>
+      <xs:element name="operator" type="xs:string" minOccurs="0"/>
+      <xs:element name="paymentType" type="paymentTypeEnum" minOccurs="0"/>
+      <xs:element name="terminalCategory" type="terminalCategory" minOccurs="0"/>
+      <xs:element name="terminalId" type="xs:string"/>
+      <xs:element name="terminalType" type="terminalType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="orderId">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="uniqueRef">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="closeBatchResponse">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="batchTime" type="xs:string"/>
+          <xs:element name="timeZone" type="xs:string" minOccurs="0"/>
+          <xs:element name="timeZoneOffset" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionResponse">
+    <xs:complexContent>
+      <xs:extension base="response">
+        <xs:sequence>
+          <xs:element name="aVSResponseCode" type="avsResponseCode" minOccurs="0"/>
+          <xs:element name="additionalFields" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="additionalField" type="additionalField" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="approvalCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="authorizedAmount" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="availableBalanceList" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="availableBalance" type="accountBalance" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="bankResponseCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="bankResponseText" type="xs:string" minOccurs="0"/>
+          <xs:element name="cVVResponseCode" type="cvvResponseCode" minOccurs="0"/>
+          <xs:element name="cashBackAmount" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="currency" type="currency" minOccurs="0"/>
+          <xs:element name="emvTags" type="emvTag" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="receiptFields" type="receiptFieldsVO" minOccurs="0"/>
+          <xs:element name="requestType" type="saleRequestType" minOccurs="0"/>
+          <xs:element name="secureCardMerchantRef" type="xs:string" minOccurs="0"/>
+          <xs:element name="secureCardReference" type="xs:string" minOccurs="0"/>
+          <xs:element name="surcharge" type="transactionSurcharge" minOccurs="0"/>
+          <xs:element name="taxes" type="tax" maxOccurs="unbounded"/>
+          <xs:element name="tip" type="tip" minOccurs="0"/>
+          <xs:element name="transactionStatus" type="transactionStatus" minOccurs="0"/>
+          <xs:element name="uniqueRef" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="additionalField">
+    <xs:sequence>
+      <xs:element name="name" type="additionalFieldType" minOccurs="0"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountBalance">
+    <xs:sequence>
+      <xs:element name="balanceAmount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="currency" type="currency" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receiptFieldsVO">
+    <xs:sequence>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="emvTags" type="emvTagReceiptFieldsVO" minOccurs="0"/>
+      <xs:element name="expiryDate" type="xs:string" minOccurs="0"/>
+      <xs:element name="maskedPan" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionType" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emvTagReceiptFieldsVO">
+    <xs:sequence>
+      <xs:element name="A50" type="xs:string" minOccurs="0"/>
+      <xs:element name="A5F20" type="xs:string" minOccurs="0"/>
+      <xs:element name="A9F06" type="xs:string" minOccurs="0"/>
+      <xs:element name="A9F26" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionSurcharge">
+    <xs:complexContent>
+      <xs:extension base="amount">
+        <xs:sequence>
+          <xs:element name="percentage" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tax">
+    <xs:complexContent>
+      <xs:extension base="amount">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="percentage" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tip">
+    <xs:complexContent>
+      <xs:extension base="amount">
+        <xs:sequence>
+          <xs:element name="percentage" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="tipType" type="tipType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="balanceInquiry">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="cardReadMethod" type="paymentMethod"/>
+          <xs:element name="currency" type="currency"/>
+          <xs:element name="customer" type="customer" minOccurs="0"/>
+          <xs:element name="device" type="posDevice" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="paymentMethod">
+    <xs:complexContent>
+      <xs:extension base="baseMethod">
+        <xs:choice>
+          <xs:element name="keyedCard" type="keyedCard"/>
+          <xs:element name="keyedAsTrack2" type="keyedAsTrackData"/>
+          <xs:element name="keyedEncrypted" type="keyedEncrypted"/>
+          <xs:element name="secureCard" type="secureCardMethod"/>
+          <xs:element name="track2" type="trackData"/>
+          <xs:element name="track2Contactless" type="trackDataContactless"/>
+          <xs:element name="emv" type="emv"/>
+          <xs:element name="emvTlv" type="emvtlv"/>
+          <xs:element name="voucher" type="voucher"/>
+          <xs:element name="applePay" type="appleWallet"/>
+          <xs:element name="androidPay" type="androidWallet"/>
+        </xs:choice>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="keyedCard">
+    <xs:complexContent>
+      <xs:extension base="cardDetails">
+        <xs:sequence>
+          <xs:element name="cvv" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardDetails">
+    <xs:sequence>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="cardHolderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardNumber" type="xs:string"/>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="expiryDate" type="xs:string"/>
+      <xs:element name="pinDetails" type="pinDetails" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="secureCardMethod">
+    <xs:sequence>
+      <xs:element name="cardReference" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trackDataContactless">
+    <xs:complexContent>
+      <xs:extension base="trackData">
+        <xs:sequence>
+          <xs:element name="additionalTags" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="voucher">
+    <xs:sequence>
+      <xs:element name="cardAccount" type="cardAccount" minOccurs="0"/>
+      <xs:element name="cardNumber" type="xs:string"/>
+      <xs:element name="cardType" type="xs:string"/>
+      <xs:element name="voucherApprovalCode" type="xs:string"/>
+      <xs:element name="voucherNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="appleWallet">
+    <xs:sequence>
+      <xs:element name="payload" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="androidWallet">
+    <xs:sequence>
+      <xs:element name="cardType" type="xs:string" minOccurs="0"/>
+      <xs:element name="cardholderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="payload" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="configurationRequest">
+    <xs:complexContent>
+      <xs:extension base="standardRequest">
+        <xs:sequence>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="standardRequest">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="apiKey" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sale">
+    <xs:complexContent>
+      <xs:extension base="transaction">
+        <xs:sequence>
+          <xs:element name="avs" type="avs" minOccurs="0"/>
+          <xs:element name="bypassSurcharge" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="cardEntryMode" type="cardEntryMode" minOccurs="0"/>
+          <xs:element name="currencyRate" type="currencyRate" minOccurs="0"/>
+          <xs:element name="customFields" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="customField" type="customField" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="debitAccountType" type="debitAccountType" minOccurs="0"/>
+          <xs:element name="device" type="posDevice" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+          <xs:element name="downgradeType" type="cardEntryMode" minOccurs="0"/>
+          <xs:element name="merchantReference" type="xs:string" minOccurs="0"/>
+          <xs:element name="orderId" type="xs:string"/>
+          <xs:element name="paymentMethod" type="paymentMethod"/>
+          <xs:element name="permittedTerminals" type="xs:string" minOccurs="0"/>
+          <xs:element name="requestType" type="saleRequestType" minOccurs="0"/>
+          <xs:element name="taxes" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="tax" type="tax" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="tip" type="tip" minOccurs="0"/>
+          <xs:element name="transactionType" type="transactionType" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transaction" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="amount" type="amount"/>
+          <xs:element name="autoReady" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="commerceType" type="commerceType" minOccurs="0"/>
+          <xs:element name="customer" type="customer" minOccurs="0"/>
+          <xs:element name="receiptDetailsRequired" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="avs">
+    <xs:sequence>
+      <xs:element name="address1" type="xs:string" minOccurs="0"/>
+      <xs:element name="address2" type="xs:string" minOccurs="0"/>
+      <xs:element name="postCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="currencyRate">
+    <xs:complexContent>
+      <xs:extension base="amount">
+        <xs:sequence>
+          <xs:element name="rate" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="serviceError">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="validationErrors" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="validationError" type="validationError" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validationError">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="target" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refund">
+    <xs:complexContent>
+      <xs:extension base="transaction">
+        <xs:sequence>
+          <xs:element name="device" type="posDevice" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+          <xs:element name="refundMethod" type="refundMethod"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="refundMethod">
+    <xs:complexContent>
+      <xs:extension base="baseMethod">
+        <xs:choice>
+          <xs:element ref="referenced"/>
+          <xs:element ref="unreferenced"/>
+        </xs:choice>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="refundReferenced">
+    <xs:complexContent>
+      <xs:extension base="refundBaseMethod">
+        <xs:sequence>
+          <xs:element name="previousTxnDateTime" type="xs:dateTime" minOccurs="0"/>
+          <xs:choice>
+            <xs:element name="orderId" type="orderId"/>
+            <xs:element name="uniqueRef" type="uniqueRef"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="refundBaseMethod">
+    <xs:sequence>
+      <xs:element name="reason" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="refundUnreferenced">
+    <xs:complexContent>
+      <xs:extension base="refundBaseMethod">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element name="cardDetails" type="cardDetails"/>
+            <xs:element name="keyedAsTrack2" type="keyedAsTrackData"/>
+            <xs:element name="keyedEncrypted" type="keyedEncrypted"/>
+            <xs:element name="cardRef" type="xs:string"/>
+            <xs:element name="track2" type="trackData"/>
+            <xs:element name="emv" type="emv"/>
+            <xs:element name="emvTlv" type="emvtlv"/>
+            <xs:element name="voucher" type="voucher"/>
+          </xs:choice>
+          <xs:element name="orderId" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="closeBatchRequest">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionUpdate">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="device" type="posDevice" minOccurs="0"/>
+          <xs:element name="deviceType" type="xs:string" minOccurs="0"/>
+          <xs:element name="uniqueRef" type="xs:string"/>
+          <xs:choice>
+            <xs:element name="customerSignature" type="customerSignature"/>
+            <xs:element name="customerDetails" type="customerDetails"/>
+            <xs:element name="issuerScriptResults" type="emv"/>
+            <xs:element ref="tipAdjustment"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customerSignature">
+    <xs:sequence>
+      <xs:element name="signature" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customerDetails">
+    <xs:sequence>
+      <xs:element name="eMail" type="xs:string" minOccurs="0"/>
+      <xs:element name="mobileNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipAdjustment">
+    <xs:complexContent>
+      <xs:extension base="tip">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="authTokenRequest">
+    <xs:complexContent>
+      <xs:extension base="authenticationRequest">
+        <xs:sequence>
+          <xs:element name="gatewayId" type="xs:string"/>
+          <xs:element name="merchantId" type="xs:string"/>
+          <xs:element name="password" type="xs:string"/>
+          <xs:element name="userName" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="authenticationRequest">
+    <xs:complexContent>
+      <xs:extension base="standardRequest">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="terminalAPIKey">
+    <xs:complexContent>
+      <xs:extension base="standardKey">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionList">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="totalCount" type="xs:int"/>
+          <xs:element name="totalSummary" type="xs:string" minOccurs="0"/>
+          <xs:element name="transactionSummary" type="transactionSummary" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionSummary">
+    <xs:sequence>
+      <xs:element name="amount" type="amount" minOccurs="0"/>
+      <xs:element name="approvalCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="commerceType" type="commerceType" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="keyedCard" type="keyedCard" minOccurs="0"/>
+      <xs:element name="orderId" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalAmount" type="amount" minOccurs="0"/>
+      <xs:element name="responseCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="surcharge" type="transactionSurcharge" minOccurs="0"/>
+      <xs:element name="taxes" type="tax" maxOccurs="unbounded"/>
+      <xs:element name="tip" type="tip" minOccurs="0"/>
+      <xs:element name="transactionDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="transactionState" type="transactionState" minOccurs="0"/>
+      <xs:element name="transactionStatus" type="transactionStatus" minOccurs="0"/>
+      <xs:element name="transactionType" type="transactionType" minOccurs="0"/>
+      <xs:element name="uniqueRef" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paymentTypeTerminalConfiguration">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="paymentType" type="paymentTypeEnum"/>
+          <xs:element name="terminalConfiguration" type="terminalConfiguration"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="balanceInquiryResponse">
+    <xs:complexContent>
+      <xs:extension base="response">
+        <xs:sequence>
+          <xs:element name="availableBalanceList" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="availableBalance" type="accountBalance" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="balanceAmount" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="bankResponseCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="bankResponseText" type="xs:string" minOccurs="0"/>
+          <xs:element name="currency" type="currency" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardTypeInfo">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="cardTypeName" type="xs:string"/>
+          <xs:element name="country" type="xs:string" minOccurs="0"/>
+          <xs:element name="currency" type="currency" minOccurs="0"/>
+          <xs:element name="debit" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="eligibleForDcc" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="terminalUpdate">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="settingCreate" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="terminalTax"/>
+                  <xs:element name="tip" type="terminalTip"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="settingDelete" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="taxUId"/>
+                  <xs:element name="tip" type="tipUId"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="settingUpdate" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="terminalTax"/>
+                  <xs:element name="tip" type="terminalTip"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="taxUId">
+    <xs:simpleContent>
+      <xs:extension base="uId"/>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="tipUId">
+    <xs:simpleContent>
+      <xs:extension base="uId"/>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="transactionReport">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="balanceInquiryCount" type="xs:int" minOccurs="0"/>
+          <xs:element name="cardAccountSummaryList" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="cardAccountSummary" type="cardAccountSummary" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="criterionType" type="transactionReportCriterion"/>
+          <xs:element name="criterionValue" type="xs:string" minOccurs="0"/>
+          <xs:element name="settlementDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardAccountSummary">
+    <xs:sequence>
+      <xs:element name="altPurchaseCount" type="xs:int"/>
+      <xs:element name="altPurchaseTotal" type="xs:decimal"/>
+      <xs:element name="altRefundCount" type="xs:int"/>
+      <xs:element name="altRefundTotal" type="xs:decimal"/>
+      <xs:element name="cardAccount" type="cardAccount"/>
+      <xs:element name="currency" type="currency"/>
+      <xs:element name="purchaseCount" type="xs:int"/>
+      <xs:element name="purchaseReversalCount" type="xs:int"/>
+      <xs:element name="purchaseReversalTotal" type="xs:decimal"/>
+      <xs:element name="purchaseTotal" type="xs:decimal"/>
+      <xs:element name="refundCount" type="xs:int"/>
+      <xs:element name="refundReversalCount" type="xs:int"/>
+      <xs:element name="refundReversalTotal" type="xs:decimal"/>
+      <xs:element name="refundTotal" type="xs:decimal"/>
+      <xs:element name="subTotalAmount" type="xs:decimal"/>
+      <xs:element name="subTotalCount" type="xs:int"/>
+      <xs:element name="withdrawalCount" type="xs:int"/>
+      <xs:element name="withdrawalTotal" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payconexTransactionData">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="accountIdDigest" type="xs:string"/>
+          <xs:element name="amount" type="amount"/>
+          <xs:element name="transactionId" type="xs:string"/>
+          <xs:element name="transactionType" type="transactionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="authenticationRequestKey">
+    <xs:complexContent>
+      <xs:extension base="standardKey">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="secureCardRemoveRestResponse">
+    <xs:complexContent>
+      <xs:extension base="response">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardTypeInfoRequest">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="account" type="account"/>
+          <xs:element name="cardTypeMethod" type="cardTypeMethod"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardTypeMethod">
+    <xs:complexContent>
+      <xs:extension base="baseMethod">
+        <xs:sequence>
+          <xs:element name="ClearCard" type="clearCard"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="clearCard">
+    <xs:sequence>
+      <xs:element name="cardNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalUpdateResponse">
+    <xs:complexContent>
+      <xs:extension base="protectedMethod">
+        <xs:sequence>
+          <xs:element name="settingCreate" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="terminalTax"/>
+                  <xs:element name="tip" type="terminalTip"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="settingDelete" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="taxUId"/>
+                  <xs:element name="tip" type="tipUId"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="settingUpdate" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                  <xs:element name="tax" type="terminalTax"/>
+                  <xs:element name="tip" type="terminalTip"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="secureCardRegisterRestResponse">
+    <xs:complexContent>
+      <xs:extension base="response">
+        <xs:sequence>
+          <xs:element name="cardReference" type="xs:string" minOccurs="0"/>
+          <xs:element name="merchantRef" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="cardEntryMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="UNSPECIFIED"/>
+      <xs:enumeration value="KEYED"/>
+      <xs:enumeration value="SWIPED"/>
+      <xs:enumeration value="BARCODE"/>
+      <xs:enumeration value="OCR"/>
+      <xs:enumeration value="ICC"/>
+      <xs:enumeration value="TRACK_ONE"/>
+      <xs:enumeration value="CONTACTLESS_ICC"/>
+      <xs:enumeration value="FILE"/>
+      <xs:enumeration value="KEYED_FALLBACK"/>
+      <xs:enumeration value="SWIPED_FALLBACK"/>
+      <xs:enumeration value="E_COMMERCE"/>
+      <xs:enumeration value="CONTACTLESS_MOTO"/>
+      <xs:enumeration value="TRACK_ANY"/>
+      <xs:enumeration value="CONTACTLESS_MSR"/>
+      <xs:enumeration value="ICC_NO_CVV"/>
+      <xs:enumeration value="STORED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cardAccount">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CASH"/>
+      <xs:enumeration value="FOOD_STAMP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fallbackReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TECHNICAL"/>
+      <xs:enumeration value="EMPTY_CANDIDATE_LIST"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="messageDigestAlgorithm">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SHA_256"/>
+      <xs:enumeration value="SHA_384"/>
+      <xs:enumeration value="SHA_512"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="applicationMatchType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="currency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AED"/>
+      <xs:enumeration value="AFN"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="AMD"/>
+      <xs:enumeration value="ANG"/>
+      <xs:enumeration value="AOA"/>
+      <xs:enumeration value="ARS"/>
+      <xs:enumeration value="AUD"/>
+      <xs:enumeration value="AWG"/>
+      <xs:enumeration value="AZN"/>
+      <xs:enumeration value="BAM"/>
+      <xs:enumeration value="BBD"/>
+      <xs:enumeration value="BDT"/>
+      <xs:enumeration value="BGN"/>
+      <xs:enumeration value="BHD"/>
+      <xs:enumeration value="BIF"/>
+      <xs:enumeration value="BMD"/>
+      <xs:enumeration value="BND"/>
+      <xs:enumeration value="BOB"/>
+      <xs:enumeration value="BOV"/>
+      <xs:enumeration value="BRL"/>
+      <xs:enumeration value="BSD"/>
+      <xs:enumeration value="BTN"/>
+      <xs:enumeration value="BWP"/>
+      <xs:enumeration value="BYR"/>
+      <xs:enumeration value="BZD"/>
+      <xs:enumeration value="CAD"/>
+      <xs:enumeration value="CDF"/>
+      <xs:enumeration value="CHE"/>
+      <xs:enumeration value="CHF"/>
+      <xs:enumeration value="CHW"/>
+      <xs:enumeration value="CLF"/>
+      <xs:enumeration value="CLP"/>
+      <xs:enumeration value="CNY"/>
+      <xs:enumeration value="COP"/>
+      <xs:enumeration value="COU"/>
+      <xs:enumeration value="CRC"/>
+      <xs:enumeration value="CUC"/>
+      <xs:enumeration value="CUP"/>
+      <xs:enumeration value="CVE"/>
+      <xs:enumeration value="CZK"/>
+      <xs:enumeration value="DJF"/>
+      <xs:enumeration value="DKK"/>
+      <xs:enumeration value="DOP"/>
+      <xs:enumeration value="DZD"/>
+      <xs:enumeration value="EGP"/>
+      <xs:enumeration value="ERN"/>
+      <xs:enumeration value="ETB"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="FJD"/>
+      <xs:enumeration value="FKP"/>
+      <xs:enumeration value="GBP"/>
+      <xs:enumeration value="GEL"/>
+      <xs:enumeration value="GHS"/>
+      <xs:enumeration value="GIP"/>
+      <xs:enumeration value="GMD"/>
+      <xs:enumeration value="GNF"/>
+      <xs:enumeration value="GTQ"/>
+      <xs:enumeration value="GYD"/>
+      <xs:enumeration value="HKD"/>
+      <xs:enumeration value="HNL"/>
+      <xs:enumeration value="HRK"/>
+      <xs:enumeration value="HTG"/>
+      <xs:enumeration value="HUF"/>
+      <xs:enumeration value="IDR"/>
+      <xs:enumeration value="ILS"/>
+      <xs:enumeration value="INR"/>
+      <xs:enumeration value="IQD"/>
+      <xs:enumeration value="IRR"/>
+      <xs:enumeration value="ISK"/>
+      <xs:enumeration value="JMD"/>
+      <xs:enumeration value="JOD"/>
+      <xs:enumeration value="JPY"/>
+      <xs:enumeration value="KES"/>
+      <xs:enumeration value="KGS"/>
+      <xs:enumeration value="KHR"/>
+      <xs:enumeration value="KMF"/>
+      <xs:enumeration value="KPW"/>
+      <xs:enumeration value="KRW"/>
+      <xs:enumeration value="KWD"/>
+      <xs:enumeration value="KYD"/>
+      <xs:enumeration value="KZT"/>
+      <xs:enumeration value="LAK"/>
+      <xs:enumeration value="LBP"/>
+      <xs:enumeration value="LKR"/>
+      <xs:enumeration value="LRD"/>
+      <xs:enumeration value="LSL"/>
+      <xs:enumeration value="LTL"/>
+      <xs:enumeration value="LVL"/>
+      <xs:enumeration value="LYD"/>
+      <xs:enumeration value="MAD"/>
+      <xs:enumeration value="MDL"/>
+      <xs:enumeration value="MGA"/>
+      <xs:enumeration value="MKD"/>
+      <xs:enumeration value="MMK"/>
+      <xs:enumeration value="MNT"/>
+      <xs:enumeration value="MOP"/>
+      <xs:enumeration value="MRO"/>
+      <xs:enumeration value="MRU"/>
+      <xs:enumeration value="MUR"/>
+      <xs:enumeration value="MVR"/>
+      <xs:enumeration value="MWK"/>
+      <xs:enumeration value="MXN"/>
+      <xs:enumeration value="MXV"/>
+      <xs:enumeration value="MYR"/>
+      <xs:enumeration value="MZN"/>
+      <xs:enumeration value="NAD"/>
+      <xs:enumeration value="NGN"/>
+      <xs:enumeration value="NIO"/>
+      <xs:enumeration value="NOK"/>
+      <xs:enumeration value="NPR"/>
+      <xs:enumeration value="NZD"/>
+      <xs:enumeration value="OMR"/>
+      <xs:enumeration value="PAB"/>
+      <xs:enumeration value="PEN"/>
+      <xs:enumeration value="PGK"/>
+      <xs:enumeration value="PHP"/>
+      <xs:enumeration value="PKR"/>
+      <xs:enumeration value="PLN"/>
+      <xs:enumeration value="PYG"/>
+      <xs:enumeration value="QAR"/>
+      <xs:enumeration value="RON"/>
+      <xs:enumeration value="RSD"/>
+      <xs:enumeration value="RUB"/>
+      <xs:enumeration value="RWF"/>
+      <xs:enumeration value="SAR"/>
+      <xs:enumeration value="SBD"/>
+      <xs:enumeration value="SCR"/>
+      <xs:enumeration value="SDG"/>
+      <xs:enumeration value="SEK"/>
+      <xs:enumeration value="SGD"/>
+      <xs:enumeration value="SHP"/>
+      <xs:enumeration value="SLL"/>
+      <xs:enumeration value="SOS"/>
+      <xs:enumeration value="SRD"/>
+      <xs:enumeration value="SSP"/>
+      <xs:enumeration value="STD"/>
+      <xs:enumeration value="STN"/>
+      <xs:enumeration value="SVC"/>
+      <xs:enumeration value="SYP"/>
+      <xs:enumeration value="SZL"/>
+      <xs:enumeration value="THB"/>
+      <xs:enumeration value="TJS"/>
+      <xs:enumeration value="TMT"/>
+      <xs:enumeration value="TND"/>
+      <xs:enumeration value="TOP"/>
+      <xs:enumeration value="TRY"/>
+      <xs:enumeration value="TTD"/>
+      <xs:enumeration value="TWD"/>
+      <xs:enumeration value="TZS"/>
+      <xs:enumeration value="UAH"/>
+      <xs:enumeration value="UGX"/>
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="USN"/>
+      <xs:enumeration value="USS"/>
+      <xs:enumeration value="UYI"/>
+      <xs:enumeration value="UYU"/>
+      <xs:enumeration value="UZS"/>
+      <xs:enumeration value="VEF"/>
+      <xs:enumeration value="VES"/>
+      <xs:enumeration value="VND"/>
+      <xs:enumeration value="VUV"/>
+      <xs:enumeration value="WST"/>
+      <xs:enumeration value="XAF"/>
+      <xs:enumeration value="XCD"/>
+      <xs:enumeration value="XOF"/>
+      <xs:enumeration value="XPF"/>
+      <xs:enumeration value="YER"/>
+      <xs:enumeration value="ZAR"/>
+      <xs:enumeration value="ZMW"/>
+      <xs:enumeration value="ZWL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PERCENTAGE"/>
+      <xs:enumeration value="FIXED_AMOUNT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREDIT_DEBIT"/>
+      <xs:enumeration value="EBT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="terminalCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNATTENDED_TERMINAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="terminalType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MOTO"/>
+      <xs:enumeration value="INTERNET"/>
+      <xs:enumeration value="CHP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="avsResponseCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="Z"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="additionalFieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ORDER_NUM"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cvvResponseCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="U"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="saleRequestType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PURCHASE"/>
+      <xs:enumeration value="CASH_WITHDRAWAL"/>
+      <xs:enumeration value="SALE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="transactionStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="READY"/>
+      <xs:enumeration value="VOID"/>
+      <xs:enumeration value="DECLINED"/>
+      <xs:enumeration value="COMPLETE"/>
+      <xs:enumeration value="REFERRAL"/>
+      <xs:enumeration value="REVERSAL"/>
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="debitAccountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CHECKING"/>
+      <xs:enumeration value="SAVINGS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="transactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SALE"/>
+      <xs:enumeration value="REFUND"/>
+      <xs:enumeration value="PRE_AUTH"/>
+      <xs:enumeration value="PRE_AUTH_COMPLETION"/>
+      <xs:enumeration value="OFFLINE_DECLINE"/>
+      <xs:enumeration value="DEFERRED_AUTH"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="commerceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_APPLICABLE"/>
+      <xs:enumeration value="INTERNET"/>
+      <xs:enumeration value="INTERNET_3DS_SECURED"/>
+      <xs:enumeration value="INTERNET_3DS_ATTEMPTED"/>
+      <xs:enumeration value="MO"/>
+      <xs:enumeration value="MOTO"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="transactionState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPEN"/>
+      <xs:enumeration value="CLOSED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="transactionReportCriterion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MERCHANT"/>
+      <xs:enumeration value="DEVICE"/>
+      <xs:enumeration value="OPERATOR"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

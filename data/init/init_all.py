@@ -1,0 +1,4 @@
+from data.init.init_edcc_rates import add_tsys_saratoga_edcc_rates, add_tsys_saratoga_gbp_cad_rate
+
+add_tsys_saratoga_edcc_rates()
+add_tsys_saratoga_gbp_cad_rate()

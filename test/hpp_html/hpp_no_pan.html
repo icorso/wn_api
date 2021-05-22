@@ -1,0 +1,159 @@
+<html>
+<head>
+<!--
+https://github.com/emn178/js-sha512
+https://github.com/Marak/faker.js/blob/master/doc/
+-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.7.1/sha512.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+	<script type="text/javascript">
+		function getHashString() {
+			// Single currency terminal TERMINALID:ORDERID:AMOUNT:DATETIME:RECEIPTPAGEURL:VALIDATIONURL:SECRET
+                        // Multicurrency terminal   TERMINALID:ORDERID:CURRENCY:AMOUNT:DATETIME:RECEIPTPAGEURL:VALIDATIONURL:SECRET
+			var hashFields = ['terminalid', 'orderid', 'amount', 'datetime', 'receiptpageurl', 'validationurl']
+
+			var hashString = ""
+
+			hashFields.forEach(function(item, i, hashFields) {
+				hashValue = document.getElementById(item).value
+				if (hashValue) {
+					hashValue = hashValue + ":"
+				}
+				hashString = hashString + hashValue
+			});
+			hashString = hashString + document.getElementById('secret').value
+			console.log(hashString)
+			return hashString
+		}
+	</script>
+	<script language="JavaScript">
+	  function fillevel2()
+	  {
+	    if (document.getElementById("level2data").checked)
+	    {
+                document.getElementById('customer_ref_number').value = Math.floor( Math.random() * (0 - 9999999999 + 1) ) + 9999999999;
+                document.getElementById('city').value = faker.address.city();
+                document.getElementById('tax_amount').value = faker.finance.amount(1,2);
+                document.getElementById('address1').value = faker.address.streetAddress();
+                document.getElementById('address2').value = faker.address.streetName();
+                document.getElementById('shipping_address').value = faker.address.secondaryAddress();
+                document.getElementById('region').value = faker.address.county();
+                document.getElementById('full_name').value = faker.name.findName();
+                document.getElementById('postcode').value = faker.address.zipCode();
+                document.getElementById('country').value = faker.address.countryCode();
+	    }
+	    else
+	    {
+                document.getElementById('customer_ref_number').value = "";
+                document.getElementById('tax_amount').value = "";
+                document.getElementById('city').value = "";
+                document.getElementById('address1').value = "";
+                document.getElementById('address2').value = "";
+                document.getElementById('shipping_address').value = "";
+                document.getElementById('region').value = "";
+                document.getElementById('postcode').value = "";
+                document.getElementById('country').value = "";
+	    }
+	  }
+	</script>
+</head>
+<body>
+    <div><small><b>VISA eDCC GBP:</b> 4485910301709438</small></div>
+    <form form="hppform" action="" method="post">
+        SERVER:<p><select size="10" onChange="this.form.action=this.options[this.selectedIndex].value;">
+          <option value="https://qawslynxwn.worldnettps.com/merchant/paymentpage">https://qawslynxwn.worldnettps.com/merchant/paymentpage</option>
+          <option value="https://qawslynxgo.worldnettps.com/merchant/paymentpage">https://qawslynxgo.worldnettps.com/merchant/paymentpage</option>
+          <option value="https://qawsirongo.worldnettps.com/merchant/paymentpage">https://qawsirongo.worldnettps.com/merchant/paymentpage</option>
+          <option value="https://qawshoundgo.worldnettps.com/merchant/paymentpage">https://qawshoundgo.worldnettps.com/merchant/paymentpage</option>
+          <option value="https://qawshoundwn.worldnettps.com/merchant/paymentpage">https://qawshoundwn.worldnettps.com/merchant/paymentpage</option>
+          <option value="https://vagrant.wntps.com/merchant/paymentpage">vagrant.wntps.com/merchant/paymentpage</option>
+          <option value="https://lpivotal.wntps.com/merchant/paymentpage">lpivotal.wntps.com/merchant/paymentpage</option>
+          <option value="https://lpayconex.wntps.commerchant/paymentpage">http://payconex:8080/merchant/paymentpage</option>
+          <option value="">---</option>
+          <option value="https://lpivotal.wntps.com/merchant/preauthpage">lpivotal.wntps.com/merchant/preauthpage</option>
+          <option value="https://vagrant.wntps.com/merchant/preauthpage">vagrant.wntps.com/merchant/preauthpage</option>
+
+	</select><p>
+        TERMINALID:<input name="TERMINALID" id="terminalid" value="21001"/><p>
+        ORDERID:<input name="ORDERID" id="orderid" value=""/><p>
+	<script type="text/javascript"> 
+		document.getElementById('orderid').value = "HPP" + faker.random.number();
+	</script>
+        CURRENCY:<input id="currency" name="CURRENCY" value="USD" /><p>
+        AMOUNT:<input id="amount" name="AMOUNT" value="1" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("amount").value = faker.finance.amount(1,10)
+	</script>
+
+        DATETIME:<input id='datetime' name="DATETIME" value="" /><p> <!-- 03-10-2017:09:43:01:673 -->
+	<script type="text/javascript"> 
+	  document.getElementById("datetime").value = moment().format('DD-MM-YYYY:hh:mm:ss:SSS');
+	</script>
+
+        HASH:<input id="hash" name="HASH" value="" />
+        <input type="button" value="Hash" onClick="document.getElementById('hash').value=sha512(getHashString())"/><p>
+        CARDHOLDERNAME:<input id="cardholdername" name="CARDHOLDERNAME" value="" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("cardholdername").value = faker.name.findName();
+	</script>
+
+        DESCRIPTION:<input id='description' name="DESCRIPTION" value="" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("description").value = faker.finance.accountName();
+	</script>
+        <!-- EMAIL:<input name="EMAIL" value="hppemail@hpp.com" /><p-->
+        PAYMENTTYPE: <input name="PAYMENTTYPE" value="" /><small> CUP_SECUREPAY or Empty</small><p/>
+        TERMINALTYPE (1-MO/TO,2-eComm):<input id="terminaltype" name="TERMINALTYPE" value="2" /><p>
+        TRANSACTIONTYPE(4 = MO/TO, 5 = 3DS fully authenticated trans, 6 = 3DS attempted trans,7 = eCommerce):<input id="transactiontype" name="TRANSACTIONTYPE" value="7" /><p>
+        <!-- ADDRESS1:<input name="ADDRESS1" value="addr eml opt1" /><p>
+        ADDRESS2:<input name="ADDRESS2" value="addr eml opt2" /><p>
+        POSTCODE:<input name="POSTCODE" value="99981" /><p>
+        CITY:<input name="CITY" value="CityEmlOpt" /><p>
+        REGION:<input name="REGION" value="AL" /><p>
+        COUNTRY:<input name="COUNTRY" value="US" /><p>   
+        PHONE:<input name="PHONE" value="837432344326" /><p -->
+        <!-- MyField:<input name="MyField" value="MyValue" /><p -->
+	/atg/store/order/purchase/CommitOrderFormHandler.commitOr<input name="/atg/store/order/purchase/CommitOrderFormHandler.commitOr" value="56" /><p>
+	/atg/store/order/purchase/CommitOrderFormHandler.commitO<input name="/atg/store/order/purchase/CommitOrderFormHandler.commitO" value="55" /><p>
+        PHONE:<input name="PHONE" value="837432344326" /><p>
+        EMAIL:<input name="EMAIL" id="email" value="" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("email").value = faker.internet.email();
+	</script>
+        SECURECARDMERCHANTREF:<input id="securecardmerchantref" name="SECURECARDMERCHANTREF" value=""/><p>
+        SECRET:<input id="secret" value="someSecretPhrase"/><p>
+	RECEIPTPAGEURL: <input id="receiptpageurl" name="RECEIPTPAGEURL" value=""/><p>
+        VALIDATIONURL: <input id="validationurl" name="VALIDATIONURL" value=""/><p>
+        LEVEL II: <input type="checkbox" id="level2data" onclick="fillevel2()"><p>
+	CUSTOMER_REF_NUMBER:<input name="CUSTOMER_REF_NUMBER" id="customer_ref_number" value=""/><p>
+        TAX_AMOUNT:<input name="TAX_AMOUNT" id="tax_amount" value=""/><p>
+        SHIPPING_ADDRESS:<input name="SHIPPING_ADDRESS" id="shipping_address" value=""/><p>
+        FULL_NAME:<input name="FULL_NAME" id="full_name" value=""/><p>
+        ADDRESS1:<input name="ADDRESS1" id="address1" value=""/><p>
+        ADDRESS2:<input name="ADDRESS2" id="address2" value=""/><p>
+        CITY:<input name="CITY" id="city" value=""/><p>
+        REGION:<input name="REGION" id="region" value=""/><p>
+        POSTCODE:<input name="POSTCODE" id="postcode" value=""/><p>
+        COUNTRY:<input name="COUNTRY" id="country" value=""/><p>
+        <!-- CREDENTIALONFILE:<input name="CREDENTIALONFILE" id="credentialonfile" value="on"/><p -->
+        ORIGINALBRANDTXIDENTIFIER:<input name="ORIGINALBRANDTXIDENTIFIER" id="originalbrandtxidentifier" value=""/><p>
+        STOREDCREDENTIALTXTYPE:<p/><select size="5" name="STOREDCREDENTIALTXTYPE">
+          <option selected value="FIRST_TXN">FIRST_TXN</option>
+          <option value="SUBSEQUENT_MERCHANT_INITIATED_TXN">SUBSEQUENT_MERCHANT_INITIATED_TXN</option>
+          <option value="SUBSEQUENT_CARDHOLDER_INITIATED_TXN">SUBSEQUENT_CARDHOLDER_INITIATED_TXN</option>
+          <option value=""></option>
+          <option value="INCORRECT">INCORRECT</option>
+        </select><p>
+        STOREDCREDENTIALUSE:<p/><select size="5" name="STOREDCREDENTIALUSE">
+          <option selected value="UNSCHEDULED">UNSCHEDULED</option>
+          <option value="INSTALLMENT">INSTALLMENT</option>
+          <option value="RECURRING">RECURRING</option>
+          <option value=""></option>
+          <option value="INCORRECT">INCORRECT</option>
+        </select><p>
+	<input type="submit" value="Pay Now" />
+
+    </form>
+</body>
+<html>

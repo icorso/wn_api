@@ -1,0 +1,46 @@
+{
+  "AccptrCxlRspn": {
+    "Hdr": {
+      "MsgFct": "CCAP",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2560025,
+      "CreDtTm": "2021-03-09T13:20:30.10Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "CxlRspn": {
+      "Envt": {
+        "AcqrrId": "8494",
+        "MrchntId": "7800187614",
+        "POIId": "78901619",
+        "Card": {
+          "PlainCardData": {
+            "PAN": "XXXXXXXXXXXXXXX",
+            "XpryDt": "2027-01"
+          },
+          "CardPdctPrfl": "VI"
+        }
+      },
+      "Tx": {
+        "TxId": {
+          "TxDt": "2021-03-09T13:20:27.672Z",
+          "TxRef": "560025"
+        },
+        "RcncltnId": "8",
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "2.21"
+        }
+      },
+      "TxRspn": {
+        "AuthstnRslt": {
+          "RspnToAuthstn": {
+            "Rspn": "APPR"
+          },
+          "AuthstnCd": "005459"
+        }
+      }
+    }
+  }
+}

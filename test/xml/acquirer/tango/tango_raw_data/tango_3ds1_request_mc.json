@@ -1,0 +1,103 @@
+{
+  "AccptrAuthstnReq": {
+    "Hdr": {
+      "MsgFct": "FAUQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2561515,
+      "CreDtTm": "2021-04-01T15:41:41.012Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "9122"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187625",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "11000811",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "514021******2433",
+            "XpryDt": "2024-09",
+            "CrdhldrNm": "Nettie Orn"
+          },
+          "CardBrnd": "MC"
+        },
+        "Crdhldr": {
+          "Id": {
+            "FrstNm": "Nettie",
+            "LstNm": "Orn",
+            "EmailAdr": "Gianni9@yahoo.com"
+          },
+          "Authntcn": [
+            {
+              "AuthntcnMtd": "CSCV",
+              "AuthntcnVal": "XXX",
+              "CSCMngmnt": "CSCP"
+            },
+            {
+              "AuthntcnMtd": "3DSC",
+              "AuthntcnVal": "jDfp08DVR6+2CBEAMOuyAigAAAA=",
+              "AuthntcnTp": "MCSC",
+              "AuthntcnRslt": "CRPT",
+              "AuthntcnTxId": "usDIcc5oqSmy6GOziwu16oM1YK0="
+            }
+          ]
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "HPP90163"
+        }
+      },
+      "Tx": {
+        "TxCaptr": "1",
+        "TxTp": "CRDP",
+        "AddtlSvc": [
+          "UCOF"
+        ],
+        "SvcAttr": "ICOF",
+        "MrchntCtgyCd": "6995",
+        "SaleRefId": "2561515",
+        "TxId": {
+          "TxDt": "2021-04-01T15:41:41.013Z",
+          "TxRef": "561515"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "USD",
+          "TtlAmt": "2.00"
+        }
+      }
+    }
+  }
+}

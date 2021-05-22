@@ -1,0 +1,54 @@
+<html>
+<head>
+<!--
+https://github.com/emn178/js-sha512
+https://github.com/Marak/faker.js/blob/master/doc/
+-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.7.1/sha512.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+	<script type="text/javascript">
+		function getHashString() {
+			// TERMINALID:TRANSACTIONCOUNT:BATCHTOTAL:DATETIME:SECRET
+			var hashFields = ['terminalid', 'transactioncount', 'batchtotal', 'datetime']
+
+			var hashString = ""
+
+			hashFields.forEach(function(item, i, hashFields) {
+				hashValue = document.getElementById(item).value
+				if (hashValue) {
+					hashValue = hashValue + ":"
+				}
+				hashString = hashString + hashValue
+                                console.log(hashValue)
+			});
+			hashString = hashString + document.getElementById('secret').value
+			console.log(hashString)
+			return hashString
+		}
+	</script>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        SERVER:<p><select size="6" onChange="this.form.action=this.options[this.selectedIndex].value;">
+          <option value="https://vagrant.wntps.com/merchant/bulkpayments/submit">https://vagrant.wntps.com/merchant/bulkpayments/submit</option>
+          <option value="https://lpivotal.wntps.com/merchant/bulkpayments/submit">https://lpivotal.wntps.com/merchant/bulkpayments/submit</option>
+          <option value="https://lpayconex.wntps.com/merchant/bulkpayments/submit">https://lpayconex.wntps.com/merchant/bulkpayments/submit</option>
+	</select><p>
+        TERMINALID:<input name="terminalid" id="terminalid" value="21001"/><p>
+        TRANSACTIONCOUNT:<input id="transactioncount" name="transactioncount" value=""/><p>
+        BATCHTOTAL:<input id="batchtotal" name="batchtotal" value=""/><p>
+        DATETIME:<input type=text id="datetime" name="datetime" value="" /><p> <!-- 03-10-2017:09:43:01:673 -->
+	<script type="text/javascript"> 
+	  document.getElementById("datetime").value = moment().format('DD-MM-YYYY:hh:mm:ss:SSS');
+	</script>
+        ISBULKACH:<input type=text id="isBulkACH" name="isBulkACH" value="N"/><p>
+        SECRET:<input type=text id="secret" value="someSecretPhrase"/><p>
+        <input type="file" id="file" name="file"></p>
+        HASH:<input id="hash" name="hash" value="" />
+        <input type="button" value="Hash" onClick="document.getElementById('hash').value=sha512(getHashString())"/><p>
+
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+<html>

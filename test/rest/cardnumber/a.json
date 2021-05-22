@@ -1,0 +1,44 @@
+{
+  "dateTime": "2021-05-05T09:23:38",
+  "hash": {
+    "messageDigestAlgorithm": "SHA_512",
+    "digest": "9fb9702718c66d9731328fa2b9309852da3aef169f22cb38a0adfaad0b8ddb0c709d93e4ce8b04a61aac174c2dd702b8aa945a682365cc28901a1960c3e2bf04"
+  },
+  "account": {
+    "deviceId": "WISEPAD",
+    "operator": "William Johns",
+    "terminalId": "21001",
+    "terminalType": "INTERNET"
+  },
+  "amount": {
+    "amount": "4.49000",
+    "currency": "USD"
+  },
+  "autoReady": "true",
+  "commerceType": "NOT_APPLICABLE",
+  "customer": {
+    "city": "New Sandra",
+    "country": "Portugal",
+    "eMail": "jenkinsamber@gmail.com",
+    "ipAddress": "218.35.68.23",
+    "mobileNumber": "5350111137620",
+    "region": "Minnesota"
+  },
+  "receiptDetailsRequired": "true",
+  "customFields": {
+    "customField": {
+      "name": "customString",
+      "value": "4382763135015884"
+    }
+  },
+  "orderId": "REST_6176647",
+  "paymentMethod": {
+    "keyedCard": {
+      "cardHolderName": "Joseph Allen",
+      "cardNumber": "4382763135015884",
+      "cardType": "visa",
+      "expiryDate": "0530",
+      "cvv": "999"
+    }
+  }
+}

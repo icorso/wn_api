@@ -1,0 +1,760 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="CardLevelLimit" type="cardLevelLimit"/>
+
+  <xs:element name="CardVolumeLimit" type="cardVolumeLimit"/>
+
+  <xs:element name="Merchant" type="merchant"/>
+
+  <xs:element name="MerchantCustomSettings" type="merchantCustomSettings"/>
+
+  <xs:element name="MerchantGeneralSetup" type="merchantGeneralSetup"/>
+
+  <xs:element name="MerchantLevelLimit" type="merchantLevelLimit"/>
+
+  <xs:element name="MerchantPortfolio" type="merchantPortfolio"/>
+
+  <xs:element name="PartnerPortfolio" type="partnerPortfolio"/>
+
+  <xs:element name="ServiceError" type="serviceError"/>
+
+  <xs:element name="Terminal" type="terminal"/>
+
+  <xs:element name="TerminalAchSettings" type="terminalAchSettings"/>
+
+  <xs:element name="TerminalBankSettings" type="terminalBankSettings"/>
+
+  <xs:element name="TerminalDraft256Billing" type="terminalDraft256Billing"/>
+
+  <xs:element name="TerminalIntegration" type="terminalIntegration"/>
+
+  <xs:element name="TerminalLevelLimit" type="terminalLevelLimit"/>
+
+  <xs:element name="TerminalLimits" type="terminalLimits"/>
+
+  <xs:element name="TerminalReceiptsNotification" type="terminalReceiptsNotification"/>
+
+  <xs:element name="TerminalSecurityFraud" type="terminalSecurityFraud"/>
+
+  <xs:element name="TerminalUnionPayProcessing" type="terminalUnionPayProcessing"/>
+
+  <xs:element name="User" type="user"/>
+
+  <xs:element name="ValidationError" type="validationError"/>
+
+  <xs:element name="VolumeLimit" type="volumeLimit"/>
+
+  <xs:element name="additionalSettings" type="additionalTerminalSettings"/>
+
+  <xs:element name="features" type="terminalFeatures"/>
+
+  <xs:element name="merchantPricing" type="pricing"/>
+
+  <xs:complexType name="merchant">
+    <xs:sequence>
+      <xs:element name="merchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="gatewayHost" type="xs:string" minOccurs="0"/>
+      <xs:element name="dbaName" type="xs:string"/>
+      <xs:element name="templateName" type="xs:string" minOccurs="0"/>
+      <xs:element name="contact" type="xs:string"/>
+      <xs:element name="phone" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="website" type="xs:string" minOccurs="0"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="mcc" type="xs:string"/>
+      <xs:element name="address1" type="xs:string"/>
+      <xs:element name="address2" type="xs:string"/>
+      <xs:element name="address3" type="xs:string" minOccurs="0"/>
+      <xs:element name="pricingType" type="pricingTypeEnum" minOccurs="0"/>
+      <xs:element name="country" type="xs:string"/>
+      <xs:element name="merchantPortfolioUniqueId" type="xs:string" minOccurs="0"/>
+      <xs:element name="partnerPortfolioUniqueId" type="xs:string" minOccurs="0"/>
+      <xs:element name="deactivationDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="timeZone" type="xs:string"/>
+      <xs:element ref="merchantPricing" minOccurs="0"/>
+      <xs:element name="merchantGeneralSetup" type="merchantGeneralSetup" minOccurs="0"/>
+      <xs:element name="merchantCustomSettings" type="merchantCustomSettings" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pricing">
+    <xs:sequence>
+      <xs:element name="monthlyFee" type="xs:double"/>
+      <xs:element name="monthlyFeeType" type="monthlyFeeTypeEnum"/>
+      <xs:element name="monthlyIncludedStandardTransactions" type="xs:int"/>
+      <xs:element name="perStandardTxnFee" type="xs:double"/>
+      <xs:element name="perThreedTxnFee" type="xs:double"/>
+      <xs:element name="perEdccTxnFee" type="xs:double"/>
+      <xs:element name="perSecureCardTxnFee" type="xs:double"/>
+      <xs:element name="perSmsFee" type="xs:double"/>
+      <xs:element name="maxMindRequestFee" type="xs:double"/>
+      <xs:element name="maxMindRejectionFee" type="xs:double"/>
+      <xs:element name="standardTransactionClassification" type="standardTransactionClassificationEnum" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="merchantGeneralSetup">
+    <xs:sequence>
+      <xs:element name="shareAllSecureCards" type="xs:boolean"/>
+      <xs:element name="shareCardsFromDeactivatedTerminals" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableMerchantLevelLimits" type="xs:boolean"/>
+      <xs:element name="merchantLevelLimits" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="merchantLimit" type="merchantLevelLimit" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="merchantLevelLimit">
+    <xs:complexContent>
+      <xs:extension base="volumeLimit">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="volumeLimit">
+    <xs:sequence>
+      <xs:element name="limitScope" type="limitScopeEnum"/>
+      <xs:element name="limitThreshold" type="xs:int"/>
+      <xs:element name="withoutCvvOnly" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="withoutAvsOnly" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="merchantCustomSettings">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="userId" type="xs:string" minOccurs="0"/>
+      <xs:element name="userName" type="xs:string"/>
+      <xs:element name="merchantId" type="xs:string"/>
+      <xs:element name="userEmail" type="xs:string"/>
+      <xs:element name="timeZone" type="xs:string"/>
+      <xs:element name="allowTerminalSetup" type="xs:boolean"/>
+      <xs:element name="allowPaymentPageLayout" type="xs:boolean"/>
+      <xs:element name="allowRefund" type="xs:boolean"/>
+      <xs:element name="allowUnreferencedRefunds" type="xs:boolean"/>
+      <xs:element name="allowVirtualTerminal" type="xs:boolean"/>
+      <xs:element name="allowChpOnVt" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowUserSetup" type="xs:boolean"/>
+      <xs:element name="allowOpenBatch" type="xs:boolean"/>
+      <xs:element name="allowClosedBatch" type="xs:boolean"/>
+      <xs:element name="allowBulkPaymentsResults" type="xs:boolean"/>
+      <xs:element name="allowBilling" type="xs:boolean"/>
+      <xs:element name="lockedStatus" type="userLockedStatusEnum" minOccurs="0"/>
+      <xs:element name="activeStatus" type="userActiveStatusEnum" minOccurs="0"/>
+      <xs:element name="allowPreauth" type="xs:boolean"/>
+      <xs:element name="allowSecureCards" type="xs:boolean"/>
+      <xs:element name="allowSubscriptions" type="xs:boolean"/>
+      <xs:element name="allowDashboard" type="xs:boolean"/>
+      <xs:element name="allowAchjhtransactions" type="xs:boolean"/>
+      <xs:element name="allowAchiptransactions" type="xs:boolean"/>
+      <xs:element name="allowPartialCaptures" type="xs:boolean"/>
+      <xs:element name="allowScheduledReport" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowApiKeyManagement" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="userProcessingTerminals" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userProcessingTerminal" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="templateName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="merchantPortfolio">
+    <xs:sequence>
+      <xs:element name="merchantPortfolioId" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="contactName" type="xs:string"/>
+      <xs:element name="contactPhone" type="xs:string"/>
+      <xs:element name="contactEmail" type="xs:string"/>
+      <xs:element name="deactivationDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="enableSecureCardUniqueness" type="xs:boolean"/>
+      <xs:element name="enableSecureCardAutoSharing" type="xs:boolean"/>
+      <xs:element name="shareCardsFromDeactivatedTerminals" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableSecureCardAutoRegistration" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="partnerPortfolio">
+    <xs:sequence>
+      <xs:element name="partnerPortfolioId" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="contactName" type="xs:string"/>
+      <xs:element name="contactPhone" type="xs:string"/>
+      <xs:element name="contactEmail" type="xs:string"/>
+      <xs:element name="percentage" type="xs:int"/>
+      <xs:element name="bankName" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankBIC" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankIBAN" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankSortCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankAccountNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="reportingEmailAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="deactivationDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="gateway" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowPayFac" type="xs:boolean"/>
+      <xs:element name="payFacBank" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacName" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacIdentifierMC" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacIdentifierVisa" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacIdentifierDiscover" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceError">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="validationErrors" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="validationError" type="validationError" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validationError">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="target" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminal">
+    <xs:sequence>
+      <xs:element name="templateName" type="xs:string" minOccurs="0"/>
+      <xs:element name="terminalNumber" type="xs:string"/>
+      <xs:element name="acquirer" type="xs:string" minOccurs="0"/>
+      <xs:element name="groupBank" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string"/>
+      <xs:element name="timeZone" type="xs:string"/>
+      <xs:element name="useTerminalAddress" type="xs:boolean"/>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="address1" type="xs:string" minOccurs="0"/>
+      <xs:element name="address2" type="xs:string" minOccurs="0"/>
+      <xs:element name="address3" type="xs:string" minOccurs="0"/>
+      <xs:element name="contactPhone" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantId" type="xs:string"/>
+      <xs:element name="secret" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacSubMerchantIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="payFacSubMerchantName" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankSettings" type="terminalBankSettings" minOccurs="0"/>
+      <xs:element ref="additionalSettings" minOccurs="0"/>
+      <xs:element ref="features" minOccurs="0"/>
+      <xs:element name="terminalLimits" type="terminalLimits" minOccurs="0"/>
+      <xs:element name="receiptsNotification" type="terminalReceiptsNotification" minOccurs="0"/>
+      <xs:element name="securityFraud" type="terminalSecurityFraud" minOccurs="0"/>
+      <xs:element name="achSettings" type="terminalAchSettings" minOccurs="0"/>
+      <xs:element name="unionPayProcessing" type="terminalUnionPayProcessing" minOccurs="0"/>
+      <xs:element name="integration" type="terminalIntegration" minOccurs="0"/>
+      <xs:element name="cards" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="card" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="threeDsCards" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="threeDsCard" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deactivationDate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalBankSettings">
+    <xs:sequence>
+      <xs:element name="currency" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowMulticurrency" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowEmcp" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="edccProvider" type="xs:string" minOccurs="0"/>
+      <xs:element name="currencies" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="currency" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="allowMoto" type="xs:boolean"/>
+      <xs:element name="allowInternet" type="xs:boolean"/>
+      <xs:element name="allowRecurring" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowPreAuth" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="bankCompanyId" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowCHP" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="terminalTypeDefault" type="terminalTypeDefaultEnum" minOccurs="0"/>
+      <xs:element name="thirdPartyCertificationNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="enableAutomaticSettle" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="batchTime" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowEditDisplayName" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="forceUniqueOrder" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="bankTerminalId" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="frontEndGroupId" type="xs:string" minOccurs="0"/>
+      <xs:element name="terminalCapability" type="terminalCapabilityEnum" minOccurs="0"/>
+      <xs:element name="customerServiceEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="customerServiceUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="customerServicePhone" type="xs:string" minOccurs="0"/>
+      <xs:element name="referenceCodeOrderIdOnly" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="cyberSourcePublicKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="nmiDefaultCardholderEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="fcsId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="additionalTerminalSettings">
+    <xs:sequence>
+      <xs:element name="agentBankNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="terminalIdNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="agentChainNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="acqInstitutionIdCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="storeNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantName" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantLocalPhoneNum" type="xs:string" minOccurs="0"/>
+      <xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="markUpPercentage" type="xs:string" minOccurs="0"/>
+      <xs:element name="canadianRegion" type="xs:string" minOccurs="0"/>
+      <xs:element name="usState" type="xs:string" minOccurs="0"/>
+      <xs:element name="abaNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="settlementAgentNo" type="xs:string" minOccurs="0"/>
+      <xs:element name="industryCode" type="industryCodeEnum" minOccurs="0"/>
+      <xs:element name="languageIndicator" type="languageIndicatorEnum" minOccurs="0"/>
+      <xs:element name="authenticationCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="acquirerBin" type="xs:string" minOccurs="0"/>
+      <xs:element name="dstObserved" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="timeZoneOffset" type="xs:int" minOccurs="0"/>
+      <xs:element name="sharingGroup" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowLevel2Data" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="reimbursementAttribute" type="reimbursementAttributeEnum" minOccurs="0"/>
+      <xs:element name="cardholderSvcPhoneNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantLocationNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="cityCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalFeatures">
+    <xs:sequence>
+      <xs:element name="allowSecurecards" type="xs:boolean"/>
+      <xs:element name="validateScSecurity" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="forceScValidation" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowHppScStorage" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="storeHppScAutomatically" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="secureCardHostedPageEmailFieldSetup" type="fieldSetupEnum" minOccurs="0"/>
+      <xs:element name="allowSubscriptions" type="xs:boolean"/>
+      <xs:element name="subscriptionSkipFailedAttempts" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="subscriptionMaxWaitForPaymentDays" type="xs:int" minOccurs="0"/>
+      <xs:element name="subscriptionMaxMissedPeriods" type="xs:int" minOccurs="0"/>
+      <xs:element name="subscriptionPaymentNotificationDays" type="xs:int" minOccurs="0"/>
+      <xs:element name="subscriptionMissedPeriodsNotification" type="xs:int" minOccurs="0"/>
+      <xs:element name="subscriptionRepeatNotificationDays" type="xs:int" minOccurs="0"/>
+      <xs:element name="subscriptionAuthMaxAttempts" type="xs:int" minOccurs="0"/>
+      <xs:element name="vauType" type="cardUpdaterTypeEnum" minOccurs="0"/>
+      <xs:element name="vauMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="abuType" type="cardUpdaterTypeEnum" minOccurs="0"/>
+      <xs:element name="abuMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowDashboard" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowBulkpayment" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowVtAutoOrderId" type="xs:boolean"/>
+      <xs:element name="enableDecryptx" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowPartialCaptures" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowScheduledReport" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableAccountUpdaterBackgroundNotifications" type="xs:boolean"/>
+      <xs:element name="accountUpdaterBackgroundNotificationUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowAmexOptBlueParticipation" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="industryServiceEstablishment" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantStreetAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowDynamicDescriptor" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="prefixDynamicDescriptor" type="xs:string" minOccurs="0"/>
+      <xs:element name="defaultDynamicDescriptor" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowEnhancedData" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="txnDataLevel" type="levelDataEnum" minOccurs="0"/>
+      <xs:element name="apiShippingAddressMode" type="apiAddressModeEnum" minOccurs="0"/>
+      <xs:element name="enableTemplateAutofill" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="merchantTaxId" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantTypeCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowCredoraxDynamicDescriptor" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="credoraxDynamicDescriptorPrefix" type="xs:string" minOccurs="0"/>
+      <xs:element name="credoraxDynamicDescriptorSuffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="googlePayEnabled" type="xs:boolean"/>
+      <xs:element name="applePayEnabled" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="appleStoreName" type="xs:string" minOccurs="0"/>
+      <xs:element name="isPayFacAllowed" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowPaymentLink" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowPayLink" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="useNetHsm" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="payLinkLogoUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="payLinkFooterNotes" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowAcquiring" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowShopify" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="shopifyPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowSurcharge" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="surchargePercent" type="xs:double" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalLimits">
+    <xs:sequence>
+      <xs:element name="enableTerminalLevelLimits" type="xs:boolean"/>
+      <xs:element name="terminalLevelLimits" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="terminalLimit" type="terminalLevelLimit" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="enableCardLevelLimits" type="xs:boolean"/>
+      <xs:element name="cardLevelLimits" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cardLimit" type="cardLevelLimit" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalLevelLimit">
+    <xs:complexContent>
+      <xs:extension base="volumeLimit">
+        <xs:sequence>
+          <xs:element name="currentValue" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cardLevelLimit">
+    <xs:sequence>
+      <xs:element name="card" type="xs:string" minOccurs="0"/>
+      <xs:element name="limits" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="limit" type="cardVolumeLimit" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cardVolumeLimit">
+    <xs:complexContent>
+      <xs:extension base="volumeLimit">
+        <xs:sequence>
+          <xs:element name="currentValue" type="xs:double" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="terminalReceiptsNotification">
+    <xs:sequence>
+      <xs:element name="disableReceipts" type="xs:boolean"/>
+      <xs:element name="notificationEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="enableEmailCardHolderReceipt" type="xs:boolean"/>
+      <xs:element name="cardHolderEmailReceiptResponseCodes" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionTypesEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="enableSMSCardHolderReceipt" type="xs:boolean"/>
+      <xs:element name="cardHolderSMSReceiptResponseCodes" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionTypesSMS" type="xs:string" minOccurs="0"/>
+      <xs:element name="showEmailOnvt" type="xs:boolean"/>
+      <xs:element name="merchantSupportEmail" type="xs:string" minOccurs="0"/>
+      <xs:element name="enableAccountUpdaterBackgroundNotificationFailureEmails" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalSecurityFraud">
+    <xs:sequence>
+      <xs:element name="allowShowCvv" type="xs:boolean"/>
+      <xs:element name="allowAutoDeclineCvvFailures" type="xs:boolean"/>
+      <xs:element name="cvvDeclineCodes" type="cvvResponseEnum" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="enableAvs" type="xs:boolean"/>
+      <xs:element name="allowAvsCompulsory" type="xs:boolean"/>
+      <xs:element name="apiAvsType" type="apiAddressModeEnum" minOccurs="0"/>
+      <xs:element name="avsSentAction" type="avsActionEnum" minOccurs="0"/>
+      <xs:element name="allowAvsCodeApproval" type="xs:boolean"/>
+      <xs:element name="approvedAVSCodes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="approvedAVSCode" type="avsResponseEnum" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="refundAmountLimit" type="xs:double"/>
+      <xs:element name="allowUnreferencedRefunds" type="xs:boolean"/>
+      <xs:element name="allowUnreferencedRefundsAfterRefundDecline" type="xs:boolean"/>
+      <xs:element name="unreferencedRefundlimit" type="xs:int"/>
+      <xs:element name="threedSecure" type="xs:boolean"/>
+      <xs:element name="threedsMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="threedsPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowVoiceId" type="xs:boolean"/>
+      <xs:element name="authId" type="xs:string" minOccurs="0"/>
+      <xs:element name="authPassword" type="xs:string" minOccurs="0"/>
+      <xs:element name="maxMindActive" type="xs:boolean"/>
+      <xs:element name="maxMindRejectOnError" type="xs:boolean"/>
+      <xs:element name="maxMindRiskScoreThreshold" type="xs:double"/>
+      <xs:element name="threatMetrixEnabled" type="xs:boolean"/>
+      <xs:element name="threatMetrixOrgId" type="xs:string" minOccurs="0"/>
+      <xs:element name="threatMetrixApiKey" type="xs:string" minOccurs="0"/>
+      <xs:element name="threatMetrixPolicyName" type="xs:string" minOccurs="0"/>
+      <xs:element name="threatMetrixRejectOnError" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="threatMetrixRiskScoreThreshold" type="xs:int" minOccurs="0"/>
+      <xs:element name="allowCardholderSignatureBypass" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="allowCvvComplianceRuleBypass" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalAchSettings">
+    <xs:sequence>
+      <xs:element name="allowAchJhTransactions" type="xs:boolean"/>
+      <xs:element name="achJhLocationId" type="xs:string" minOccurs="0"/>
+      <xs:element name="achJhMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="achJhBankGroupId" type="xs:string" minOccurs="0"/>
+      <xs:element name="achJhBankConvenienceFee" type="xs:string" minOccurs="0"/>
+      <xs:element name="allowAchIpTransactions" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalUnionPayProcessing">
+    <xs:sequence>
+      <xs:element name="allowUnionPayProcessing" type="xs:boolean"/>
+      <xs:element name="cupMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantCategoryCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantAbbreviation" type="xs:string" minOccurs="0"/>
+      <xs:element name="draft256Billing" type="terminalDraft256Billing" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalDraft256Billing">
+    <xs:sequence>
+      <xs:element name="cupBankMerchantId" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupTerminalIdNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupAcqInstitutionIdCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupStoreNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantName" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantLocalPhoneNum" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupPostalCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="merchantStreetAddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="cupMerchantState" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="terminalIntegration">
+    <xs:sequence>
+      <xs:element name="enableBackgroundValidation" type="xs:boolean"/>
+      <xs:element name="autoReady" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="autoReadyLimit" type="xs:int" minOccurs="0"/>
+      <xs:element name="backgroundValidationUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiptPageUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiptMpiUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiptSecureCardUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiptSubscriptionUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="subscriptionNotificationUrl" type="xs:string" minOccurs="0"/>
+      <xs:element name="showMaskedCardDetailsInXmlResponse" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="paymentVersion" type="paymentVersionEnum" minOccurs="0"/>
+      <xs:element name="useUniqueRef" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="addBankResponseCodeToXML" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableAdditionalFieldsInXml" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableOriginalResponseInXml" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableSupportsApplePayInXmlResponse" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableSupportsGooglePayInXmlResponse" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enable3dsInXmlResponse" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="enableSupportedCardsInXmlResponse" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="pricingTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MERCHANT_LEVEL"/>
+      <xs:enumeration value="TERMINAL_LEVEL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="monthlyFeeTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INCLUDED_TRANS"/>
+      <xs:enumeration value="MINIMUM"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="standardTransactionClassificationEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="COMPLETED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="limitScopeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DAILY"/>
+      <xs:enumeration value="MONTHLY"/>
+      <xs:enumeration value="SINGLE_TRANSACTION"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="userLockedStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="LOCKED_BY_TOO_MANY_ATTEMPTS"/>
+      <xs:enumeration value="LOCKED_BY_ADMIN"/>
+      <xs:enumeration value="LOCKED_BY_SELF"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="userActiveStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="DESACTIVATED_BY_MERCHANT"/>
+      <xs:enumeration value="DESACTIVATED_BY_ADMIN"/>
+      <xs:enumeration value="MERCHANT_DESACTIVATED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="terminalTypeDefaultEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MOTO"/>
+      <xs:enumeration value="CHP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="terminalCapabilityEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MAG_STRIPE_READ_ONLY"/>
+      <xs:enumeration value="MAG_STRIPE_AND_MANUAL_ENTRY"/>
+      <xs:enumeration value="MANUAL_ENTRY_ONLY"/>
+      <xs:enumeration value="EMV_INCLUDE_PROXIMITY"/>
+      <xs:enumeration value="EMV_DOES_NOT_INCLUDE_CONTACT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="industryCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="AUTORENTAL"/>
+      <xs:enumeration value="FINANCIAL"/>
+      <xs:enumeration value="MARKETING"/>
+      <xs:enumeration value="FOOD"/>
+      <xs:enumeration value="GROCERY"/>
+      <xs:enumeration value="HOTEL"/>
+      <xs:enumeration value="LIMITED"/>
+      <xs:enumeration value="OIL"/>
+      <xs:enumeration value="PASSENGER"/>
+      <xs:enumeration value="RETAIL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="languageIndicatorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENGLISH"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="reimbursementAttributeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ATTRIBUTE_0"/>
+      <xs:enumeration value="ATTRIBUTE_W"/>
+      <xs:enumeration value="ATTRIBUTE_X"/>
+      <xs:enumeration value="ATTRIBUTE_Y"/>
+      <xs:enumeration value="ATTRIBUTE_Z"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fieldSetupEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HIDDEN"/>
+      <xs:enumeration value="OPTIONAL"/>
+      <xs:enumeration value="MANDATORY"/>
+      <xs:enumeration value="READONLY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cardUpdaterTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISABLED"/>
+      <xs:enumeration value="GLOBAL_VAU"/>
+      <xs:enumeration value="GLOBAL_ABU"/>
+      <xs:enumeration value="EURO_ABU"/>
+      <xs:enumeration value="ELAVONPOS_VAU"/>
+      <xs:enumeration value="ELAVONPOS_ABU"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="levelDataEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STANDARD"/>
+      <xs:enumeration value="LEVEL_II"/>
+      <xs:enumeration value="LEVEL_III"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="apiAddressModeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EXACT"/>
+      <xs:enumeration value="POSTAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="cvvResponseEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATCH"/>
+      <xs:enumeration value="NOT_MATCH"/>
+      <xs:enumeration value="NOT_PROCESSED"/>
+      <xs:enumeration value="ISSUER_NOT_CERTIFIED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="avsActionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HIDE"/>
+      <xs:enumeration value="DISPLAY"/>
+      <xs:enumeration value="EDITABLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="avsResponseEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATCH"/>
+      <xs:enumeration value="PARTIAL_MATCH_ADDRESS"/>
+      <xs:enumeration value="PARTIAL_MATCH_ZIP_CODE"/>
+      <xs:enumeration value="NOT_MATCH"/>
+      <xs:enumeration value="ADDRESS_NOT_VERIFIED_OR_UNAVAILABLE"/>
+      <xs:enumeration value="SYSTEM_UNAVAILABLE"/>
+      <xs:enumeration value="NOT_SUPPORTED"/>
+      <xs:enumeration value="ABSENT_OR_INVALID_AVS"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="X"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentVersionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VERSION_1"/>
+      <xs:enumeration value="VERSION_2"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

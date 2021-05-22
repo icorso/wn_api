@@ -1,0 +1,103 @@
+{
+  "AccptrAuthstnReq": {
+    "Hdr": {
+      "MsgFct": "FAUQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2561517,
+      "CreDtTm": "2021-04-01T16:07:39.696Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "9122"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187625",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "11000811",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "401201******0005",
+            "XpryDt": "2026-01",
+            "CrdhldrNm": "Isom Towne I"
+          },
+          "CardBrnd": "VISA"
+        },
+        "Crdhldr": {
+          "Id": {
+            "FrstNm": "Isom",
+            "LstNm": "Towne I",
+            "EmailAdr": "Trisha_Glover@hotmail.com"
+          },
+          "Authntcn": [
+            {
+              "AuthntcnMtd": "CSCV",
+              "AuthntcnVal": "XXX",
+              "CSCMngmnt": "CSCP"
+            },
+            {
+              "AuthntcnMtd": "3DSC",
+              "AuthntcnVal": "AJkBCQIGiIYplVGQaQaIAAAAAAA=",
+              "AuthntcnTp": "EMVC",
+              "AuthntcnRslt": "CRPT",
+              "AuthntcnTxId": "80c0fe8e-1996-40a7-bf0a-dfbb5dfb7e08"
+            }
+          ]
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "HPP40941"
+        }
+      },
+      "Tx": {
+        "TxCaptr": "1",
+        "TxTp": "CRDP",
+        "AddtlSvc": [
+          "UCOF"
+        ],
+        "SvcAttr": "ICOF",
+        "MrchntCtgyCd": "6995",
+        "SaleRefId": "2561517",
+        "TxId": {
+          "TxDt": "2021-04-01T16:07:39.697Z",
+          "TxRef": "561517"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "USD",
+          "TtlAmt": "10.00"
+        }
+      }
+    }
+  }
+}

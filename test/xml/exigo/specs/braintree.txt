@@ -1,0 +1,116 @@
+https://developers.braintreepayments.com/reference/general/testing/python
+
+Valid cardnumbers
+------------------
+378282246310005	American Express
+371449635398431	American Express
+36259600000004	Diners Club*
+6011111111111117	Discover
+3530111333300000	JCB
+6304000000000000	Maestro
+5555555555554444	Mastercard
+2223000048400011	Mastercard
+4111111111111111	Visa
+4005519200000004	Visa
+4009348888881881	Visa
+4012000033330026	Visa
+4012000077777777	Visa
+4012888888881881	Visa
+4217651111111119	Visa
+4500600000000061	Visa
+
+Invalid verification
+---------------------
+Test Value        Card Type	        Verification Response
+4000111111111115  Visa	            processor declined
+5105105105105100  Mastercard        processor declined
+378734493671000   American Express  processor declined
+6011000990139424  Discover          processor declined
+38520000009814    Diners Club*      processor declined
+3566002020360505  JCB               failed (3000)
+
+Card numbers with type indicators
+-------------------------
+4500600000000061	prepaid = "Yes"
+4009040000000009	commercial = "Yes"
+4005519200000004	Durbin regulated = "Yes"
+4012000033330026	healthcare = "Yes"
+4012000033330125	debit = "Yes"
+4012000033330224	payroll = "Yes"
+4012000033330422	all values = "No"
+4012000033330323	all values = "Unknown"
+
+Card numbers with other information
+-------------------------
+4012000033330620	country of issuance = "USA"
+4012000033330729	country of issuance = "CAN"
+4012000033330521	issuing bank ="NETWORK ONLY"
+
+
+CVV/CID responses
+-------------------------
+CVV	CID (Amex)	Response
+200	2000	N (does not match)
+201	2011	U (not verified)
+301	3011	S (issuer does not participate)
+no value passed	no value passed	I (not provided)
+any other value	any other value	M (matches)
+
+AVS error responses
+-------------------------
+Billing Postal Code	Response
+30000	E (AVS system error)
+30001	S (issuing bank does not support AVS)
+
+AVS postal code responses
+-------------------------
+Billing Postal Code	Response
+20000	N (does not match)
+20001	U (not verified)
+no value passed	I (not provided)
+any other value	M (matches)
+
+AVS street address responses
+-------------------------
+Billing Street Address	Response
+street number is 200 (e.g. 200 N Main St)	N (does not match)
+street number is 201 (e.g. 201 N Main St)	U (not verified)
+no value passed	I (not provided)
+any other value	M (matches)
+
+Amount	Authorization Response	Settlement Response
+---------------------------------------------------
+0.01 - 1999.99	Authorized	Settled
+2000.00 - 3000.99	Processor Declined with a processor response equal to the amount	n/a
+3001.00 - 4000.99	Authorized	Settled
+4001.00 - 4001.99	Authorized	Settlement Declined on certain transaction types with a processor response equal to the amount; Settled on all others
+4002.00 - 4002.99	Authorized	Settlement Pending on PayPal transactions with a processor response equal to the amount; Settled on all others
+4003.00 - 5000.99	Authorized	Settlement Declined on certain transaction types with a processor response equal to the amount; Settled on all others
+5001.00	Gateway Rejected with a reason of Application Incomplete	n/a
+5001.01	Processor Declined on PayPal transactions in the Mocked PayPal flow with a 2038 processor response. Authorized on all others	n/a on PayPal transactions; Settled on all others
+5001.02	Authorized	Processor Unavailable on certain transaction types with a processor response of 3000; Settled on all others
+5002.00 and up	Authorized	Settled
+
+Settlement
+--------------
+Approvals
+Code	Text
+4000	Settled
+
+Pending requests
+Code	Text
+4002	Settlement Pending
+
+Declines
+Code	Text
+4001	Settlement Declined
+4003	Already Captured
+4004	Already Refunded
+4005	PayPal Risk Rejected
+4006	Capture Amount Exceeded Allowable Limit
+4018	PayPal Pending Payments Not Supported
+4019	PayPal Refund Transaction with an Open Case Not Allowed
+4020	PayPal Refund Attempt Limit Reached
+4021	PayPal Refund Transaction Not Allowed
+4022	PayPal Refund Invalid Partial Amount
+4023	PayPal Refund Merchant Account Missing ACH

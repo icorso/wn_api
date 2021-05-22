@@ -1,0 +1,35 @@
+{
+  "AccptrCmpltnAdvcRspn": {
+    "Hdr": {
+      "MsgFct": "FCMK",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2559502,
+      "CreDtTm": "2021-03-04T08:03:42.12Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "CmpltnAdvcRspn": {
+      "Envt": {
+        "AcqrrId": "8494",
+        "MrchntId": "7800187614",
+        "POIId": "78901619",
+        "Card": {
+          "PlainCardData": {
+            "PAN": "XXXXXXXXXXXXXXX",
+            "XpryDt": "2022-12"
+          },
+          "CardPdctPrfl": "VI"
+        }
+      },
+      "Tx": {
+        "TxId": {
+          "TxDt": "2021-03-04T08:03:39.347Z",
+          "TxRef": "559502"
+        },
+        "RcncltnId": "1",
+        "Rspn": "APPR"
+      }
+    }
+  }
+}

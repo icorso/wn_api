@@ -1,0 +1,81 @@
+{
+  "AccptrCxlReq": {
+    "Hdr": {
+      "MsgFct": "CCAQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2559005,
+      "CreDtTm": "2021-03-04T08:22:17.573Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "CxlReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "8494"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187614",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "78901619",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "428744******7062",
+            "XpryDt": "2024-01",
+            "CrdhldrNm": "Megan Sullivan"
+          },
+          "CardBrnd": "VISA"
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        }
+      },
+      "Tx": {
+        "TxTp": "CRDP",
+        "MrchntCtgyCd": "6995",
+        "TxId": {
+          "TxDt": "2021-03-04T08:22:17.575Z",
+          "TxRef": "559005"
+        },
+        "RcncltnId": "1",
+        "OrgnlTx": {
+          "TxId": {
+            "TxDt": "2021-03-04T08:19:56.761Z",
+            "TxRef": "559005"
+          },
+          "POIId": "78901619",
+          "TxTp": "CRDP"
+        },
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "8.54"
+        }
+      }
+    }
+  }
+}

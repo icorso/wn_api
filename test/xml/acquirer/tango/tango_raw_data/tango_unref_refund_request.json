@@ -1,0 +1,72 @@
+{
+  "Hdr": {
+    "MsgFct": "FAUQ",
+    "PrtcolVrsn": "01.01",
+    "XchgId": 2559508,
+    "CreDtTm": "2021-03-04T13:39:55.599Z",
+    "InitgPty": {
+      "PtyId": "g1p"
+    }
+  },
+  "AuthstnReq": {
+    "Envt": {
+      "Acqrr": {
+        "AcqrrId": "8494"
+      },
+      "Mrchnt": {
+        "MrchntId": "7800187614",
+        "LctnAndCtct": {
+          "CstmrSvc": "5508044247213"
+        },
+        "SchmeData": {},
+        "CmonNm": "merchant_go"
+      },
+      "POI": {
+        "POIId": "78901619",
+        "Cpblties": {
+          "CardRdngCpblties": [
+            "KEYD"
+          ],
+          "CrdhldrVrfctnCpblties": [],
+          "PINLngthCpblties": "0",
+          "ApprvlCdLngth": 6,
+          "CardCaptrCpbl": 0,
+          "CardWrtngCpblties": [],
+          "MsgCpblties": []
+        }
+      },
+      "Card": {
+        "PlainCardData": {
+          "PAN": "471656******4649",
+          "XpryDt": "2022-12",
+          "CrdhldrNm": "Lulu Walsh"
+        },
+        "CardBrnd": "VISA"
+      }
+    },
+    "Cntxt": {
+      "PmtCntxt": {
+        "CardPres": 0,
+        "CrdhldrPres": 0,
+        "AttndncCntxt": "UATT",
+        "TxEnvt": "PUBL",
+        "TxChanl": "ECOM",
+        "CardDataNtryMd": "MANU"
+      }
+    },
+    "Tx": {
+      "TxTp": "RFND",
+      "MrchntCtgyCd": "6995",
+      "TxId": {
+        "TxDt": "2021-03-04T13:39:55.601Z",
+        "TxRef": "559508"
+      },
+      "RcncltnId": "3",
+      "TxDtls": {
+        "CcyCd": "CAD",
+        "TtlAmt": "2.21",
+        "UattnddLvlCtgy": "LVL6"
+      }
+    }
+  }
+}}

@@ -1,0 +1,35 @@
+{
+  "AccptrRcncltnReq": {
+    "Hdr": {
+      "MsgFct": "RCLQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 25,
+      "CreDtTm": "2021-03-04T12:21:52.829Z",
+      "InitgPty": {
+        "PtyId": "0"
+      }
+    },
+    "RcncltnReq": {
+      "Envt": {
+        "Mrchnt": {
+          "MrchntId": "7800187614"
+        },
+        "POI": {
+          "POIId": "78901619"
+        }
+      },
+      "Tx": {
+        "RcncltnId": "2",
+        "TxDtls": {
+          "CcyCd": "CAD"
+        },
+        "ClsPrd": 0,
+        "OvrrdUnblnc": 0,
+        "RcncltnTxId": {
+          "TxDt": "2021-03-04T12:21:52.829Z",
+          "TxRef": "2"
+        }
+      }
+    }
+  }
+}

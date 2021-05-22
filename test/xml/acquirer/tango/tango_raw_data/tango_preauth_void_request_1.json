@@ -1,0 +1,84 @@
+{
+  "AccptrCmpltnAdvc": {
+    "Hdr": {
+      "MsgFct": "FCMV",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2560001,
+      "CreDtTm": "2021-03-09T07:04:35.963Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "CmpltnAdvc": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "8494"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187614",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "78901619",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "457623******0926",
+            "XpryDt": "2023-02",
+            "CrdhldrNm": "Cassandra Blake"
+          },
+          "CardBrnd": "VISA"
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "XML_7879500"
+        }
+      },
+      "Tx": {
+        "TxTp": "RESA",
+        "SvcAttr": "PRES",
+        "SaleRefId": "2560001",
+        "TxId": {
+          "TxDt": "2021-03-09T07:04:35.963Z",
+          "TxRef": "560001"
+        },
+        "RcncltnId": "4",
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "8.79"
+        },
+        "TxSucss": 1,
+        "AuthstnRslt": {
+          "RspnToAuthstn": {
+            "Rspn": "APPR"
+          },
+          "AuthstnCd": "005450"
+        }
+      }
+    }
+  }
+}

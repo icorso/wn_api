@@ -1,0 +1,83 @@
+{
+  "AccptrCmpltnAdvc": {
+    "Hdr": {
+      "MsgFct": "FCMV",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2559502,
+      "CreDtTm": "2021-03-04T08:03:39.347Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "CmpltnAdvc": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "8494"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187614",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "78901619",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "491668******4775",
+            "XpryDt": "2022-12",
+            "CrdhldrNm": "Lulu Walsh"
+          },
+          "CardBrnd": "VISA"
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "TxEnvt": "SERV",
+          "TxChanl": "TLPH",
+          "CardDataNtryMd": "KEYD"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "VT0000000001"
+        }
+      },
+      "Tx": {
+        "TxTp": "RESA",
+        "SvcAttr": "PRES",
+        "SaleRefId": "2559502",
+        "TxId": {
+          "TxDt": "2021-03-04T08:03:39.347Z",
+          "TxRef": "559502"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "3.52"
+        },
+        "TxSucss": 1,
+        "AuthstnRslt": {
+          "RspnToAuthstn": {
+            "Rspn": "APPR"
+          },
+          "AuthstnCd": "006631"
+        }
+      }
+    }
+  }
+}

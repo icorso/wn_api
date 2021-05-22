@@ -1,0 +1,125 @@
+CARDNUMBER 5466838844198035 / 1024
+
+{
+  "AccptrAuthstnReq": {
+    "Hdr": {
+      "MsgFct": "FAUQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2561527,
+      "CreDtTm": "2021-03-30T12:59:15.238Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "9122"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187625",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "11000811",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "546683******8035",
+            "XpryDt": "2024-10",
+            "CrdhldrNm": "Ryan Riley"
+          },
+          "CardBrnd": "MC"
+        },
+        "Crdhldr": {
+          "Id": {
+            "FrstNm": "Ryan",
+            "LstNm": "Riley",
+            "EmailAdr": "erik40@yahoo.com"
+          },
+          "Authntcn": [
+            {
+              "AuthntcnMtd": "CSCV",
+              "AuthntcnVal": "XXX",
+              "CSCMngmnt": "CSCP"
+            }
+          ]
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "SaleRefNb": "CRN_4871877",
+          "PurchsOrdrNb": "XML_4200400"
+        }
+      },
+      "Tx": {
+        "TxCaptr": "1",
+        "TxTp": "CRDP",
+        "MrchntCtgyCd": "6995",
+        "SaleRefId": "2561527",
+        "TxId": {
+          "TxDt": "2021-03-30T12:59:15.241Z",
+          "TxRef": "561527"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "USD",
+          "TtlAmt": "8.73",
+          "UattnddLvlCtgy": "LVL6",
+          "InvcData": {
+            "Sellr": {
+              "TaxId": [
+                {}
+              ]
+            },
+            "Ttls": {
+              "TtlAmt": "8.73",
+              "TaxAmt": "3.99"
+            }
+          },
+          "DlvryData": {
+            "ShipTo": {
+              "Prsn": {
+                "FrstNm": "Julian",
+                "LstNm": " Chang"
+              },
+              "PstlAdr": {
+                "StrtNm": "0846 Robert Parkway Apt. 798 Suite 471",
+                "PstCd": "52693",
+                "CtrySubDvsn": "Michigan",
+                "Ctry": "VUT",
+                "TwnNm": "Johnsonmouth"
+              }
+            }
+          },
+          "Srchrg": {
+            "Amt": "0.34"
+          }
+        }
+      }
+    }
+  }
+}

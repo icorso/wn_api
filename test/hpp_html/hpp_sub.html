@@ -1,0 +1,66 @@
+<html>
+<head>
+<!--
+https://github.com/emn178/js-sha512
+https://github.com/Marak/faker.js/blob/master/doc/
+-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.7.1/sha512.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+	<script type="text/javascript">
+		function getHashString() {
+			var hashFields = ['terminalid', 'merchantref', 'securecardmerchantref', 'datetime', 'startdate']
+
+			var hashString = ""
+
+			hashFields.forEach(function(item, i, hashFields) {
+				hashValue = document.getElementById(item).value
+				console.log(hashValue)
+				if (hashValue) {
+					hashValue = hashValue + ":"
+				}
+				hashString = hashString + hashValue
+			});
+			hashString = hashString + document.getElementById('secret').value
+			console.log(hashString)
+			return hashString
+		}
+	</script>
+</head>
+<body>
+    <form action="" method="post">
+        SERVER:<p><select size="6" onChange="this.form.action=this.options[this.selectedIndex].value;">
+          <option value="https://qawslynxwn.worldnettps.com/merchant/subscriptionpage/register">https://qawslynxwn.worldnettps.com/merchant/subscriptionpage/register</option>
+          <option value="https://qawslynxgo.worldnettps.com/merchant/subscriptionpage/register">https://qawslynxgo.worldnettps.com/merchant/subscriptionpage/register</option>
+          <option value="https://qawsirongo.worldnettps.com/merchant/subscriptionpage/register">https://qawsirongo.worldnettps.com/merchant/subscriptionpage/register</option>
+          <option value="https://vagrant.wntps.com/merchant/subscriptionpage/register">https://vagrant.wntps.com/merchant/subscriptionpage/register</option>
+          <option value="https://lpivotal.wntps.com/merchant/subscriptionpage/register">https://lpivotal.wntps.com/merchant/subscriptionpage/register</option>
+          <option value="https://lpayconex.wntps.com/merchant/subscriptionpage/register">https://lpayconex.wntps.com/merchant/subscriptionpage/register</option>
+	</select><p>
+        TERMINALID:<input id="terminalid" name="TERMINALID" value="21001"/><p>
+        MERCHANTREF:<input id="merchantref" name="MERCHANTREF" value=""/><p>
+	<script type="text/javascript"> 
+		document.getElementById('merchantref').value = "HPP" + faker.random.number();
+	</script>
+        STOREDSUBSCRIPTIONREF:<input id="storedsubscriptionref" name="STOREDSUBSCRIPTIONREF" value=""/><p>
+        SECURECARDMERCHANTREF:<input id="securecardmerchantref" name="SECURECARDMERCHANTREF" value=""/><p>
+        <!-- CARDREFERENCE:<input id="cardreference" name="SECURECARDMERCHANTREF" value=""/><p -->
+	SUBSCRIPTIONRECURRINGAMOUNT:<input id="subscriptionrecurringamount" name="SUBSCRIPTIONRECURRINGAMOUNT" value=""/><p>
+        SUBSCRIPTIONINITIALAMOUNT:<input id="subscriptioninitialamount" name="SUBSCRIPTIONINITIALAMOUNT" value=""/><p>
+        DATETIME:<input id='datetime' name="DATETIME" value="" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("datetime").value = moment().format('DD-MM-YYYY:hh:mm:ss:SSS');
+	</script>
+        STARTDATE:<input id="startdate" name="STARTDATE" value="" /><p>
+        <script type="text/javascript">
+          document.getElementById("startdate").value = moment().format('DD-MM-YYYY');
+        </script>
+        ENDDATE:<input id="enddate" name="ENDDATE" value="" /><p>
+        HASH:<input id="hash" name="HASH" value="" /><p>
+        <input type="button" value="Hash" onClick="document.getElementById('hash').value=sha512(getHashString())"/><p>
+        SECRET:<input id="secret" value="someSecretPhrase"/><p>
+	<input type="submit" value="Pay Now" />
+
+    </form>
+</body>
+<html>

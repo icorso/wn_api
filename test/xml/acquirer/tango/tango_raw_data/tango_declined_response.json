@@ -1,0 +1,16 @@
+{
+  "AccptrRjctn": {
+    "Hdr": {
+      "MsgFct": "RJCQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2559002,
+      "CreDtTm": "2021-03-04T06:22:48.34Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "Rjct": {
+      "RjctRsn": "UNPR"
+    }
+  }
+}

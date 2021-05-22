@@ -1,0 +1,59 @@
+{
+  "AccptrAuthstnRspn": {
+    "Hdr": {
+      "MsgFct": "AUTP",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2559004,
+      "CreDtTm": "2021-03-04T07:10:51.53Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnRspn": {
+      "Envt": {
+        "AcqrrId": "8494",
+        "MrchntId": "7800187614",
+        "POIId": "78901619",
+        "Card": {
+          "PlainCardData": {
+            "PAN": "XXXXXXXXXXXXXXX",
+            "XpryDt": "2028-03"
+          },
+          "CardPdctPrfl": "VI"
+        }
+      },
+      "Tx": {
+        "TxId": {
+          "TxDt": "2021-03-04T07:10:46.635Z",
+          "TxRef": "559004"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "2.35"
+        }
+      },
+      "TxRspn": {
+        "AuthstnRslt": {
+          "CardSchmeId": "0",
+          "RspnToAuthstn": {
+            "Rspn": "APPR",
+            "CardSchmeRslt": "00"
+          },
+          "AuthstnCd": "006630",
+          "POIParams": {
+            "LclDtTm": "2021-03-04T02:10:51"
+          }
+        },
+        "TxVrfctnRslt": [
+          {
+            "Mtd": "CSCV",
+            "Rslt": "SUCC",
+            "RsltRsn": "1002",
+            "CardSchmeRslt": "M"
+          }
+        ]
+      }
+    }
+  }
+}

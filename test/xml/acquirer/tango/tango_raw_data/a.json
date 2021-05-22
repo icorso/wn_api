@@ -1,0 +1,61 @@
+{
+  "AccptrRcncltnRspn": {
+    "Hdr": {
+      "MsgFct": "RCLP",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 47,
+      "CreDtTm": "2021-04-12T14:57:03.92Z",
+      "InitgPty": {
+        "PtyId": "0"
+      }
+    },
+    "RcncltnRspn": {
+      "Envt": {
+        "MrchntId": "7800187634",
+        "POIId": "11000820"
+      },
+      "TxRspn": {
+        "Rspn": "DECL",
+        "RspnRsn": "DFIT"
+      },
+      "Tx": {
+        "ClsPrd": 0,
+        "RcncltnTxId": {
+          "TxDt": "2021-04-12T14:57:00.653Z",
+          "TxRef": "11"
+        },
+        "RcncltnId": "11",
+        "TxTtls": [
+          {
+            "CardPdctPrfl": "VI",
+            "Ccy": "CAD",
+            "Tp": "CRDT",
+            "TtlNb": 0,
+            "CmltvAmt": "0.00"
+          },
+          {
+            "CardPdctPrfl": "VI",
+            "Ccy": "CAD",
+            "Tp": "CRDR",
+            "TtlNb": 0,
+            "CmltvAmt": "0.00"
+          },
+          {
+            "CardPdctPrfl": "VI",
+            "Ccy": "CAD",
+            "Tp": "DEBT",
+            "TtlNb": 2,
+            "CmltvAmt": "12.22"
+          },
+          {
+            "CardPdctPrfl": "VI",
+            "Ccy": "CAD",
+            "Tp": "DBTR",
+            "TtlNb": 0,
+            "CmltvAmt": "0.00"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<html>
+<head>
+<!--
+https://github.com/emn178/js-sha512
+https://github.com/Marak/faker.js/blob/master/doc/
+-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.7.1/sha512.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+	<script type="text/javascript">
+		function getHashString() {
+			// TERMINALID:ORDERID:CARDNUMBER:CARDEXPIRY:CARDTYPE:AMOUNT:DATETIME:SECRET
+			var hashFields = ['terminalid', 'orderid', 'cardnumber', 'cardexpiry', 
+'cardtype', 'amount', 'datetime']
+
+			var hashString = ""
+
+			hashFields.forEach(function(item, i, hashFields) {
+				hashValue = document.getElementById(item).value
+				if (hashValue) {
+					hashValue = hashValue + ":"
+				}
+				hashString = hashString + hashValue
+			});
+			hashString = hashString + document.getElementById('secret').value
+			console.log(hashString)
+			return hashString
+		}
+	</script>
+</head>
+<body>
+    <form action="" method="post">
+        SERVER:<p><select size="10" onChange="this.form.action=this.options[this.selectedIndex].value;">
+          <option value="https://qawslynxwn.worldnettps.com/merchant/mpi">https://qawslynxwn.worldnettps.com/merchant/mpi</option>
+          <option value="https://qawslynxgo.worldnettps.com/merchant/mpi">https://qawslynxgo.worldnettps.com/merchant/mpi</option>
+          <option value="https://qawsirongo.worldnettps.com/merchant/mpi">https://qawsirongo.worldnettps.com/merchant/mpi</option>
+          <option value="https://vagrant.wntps.com/merchant/mpi">https://vagrant.wntps.com/merchant/mpi</option>
+          <option value="https://lpivotal.wntps.com/merchant/mpi">https://lpivotal.wntps.com/merchant/mpi</option>
+          <option value="https://lpayconex.wntps.com/merchant/mpi">https://payconex.wntps.com/merchant/mpi</option>
+	</select><p>
+        TERMINALID:<input name="TERMINALID" id="terminalid" value="21001"/><p>
+        CARDNUMBER:<input id="cardnumber" name="CARDNUMBER" value="5304515470226308" /><p>
+        CARDEXPIRY:<input id="cardexpiry" name="CARDEXPIRY" value="1023" /><p>
+        CARDTYPE:<input id="cardtype" name="CARDTYPE" value="MASTERCARD" /><p>
+        AMOUNT:<input id="amount" name="AMOUNT" value="1" /><p>
+	<script type="text/javascript"> 
+	  document.getElementById("amount").value = faker.finance.amount(1,10)
+	</script>
+        CURRENCY:<input id="currency" name="CURRENCY" value="USD" /><p>
+        ORDERID:<input name="ORDERID" id="orderid" value=""/><p>
+	<script type="text/javascript"> 
+		document.getElementById('orderid').value = Math.floor( Math.random() * (0 - 9999999999 + 1) ) + 9999999999;
+	</script>
+        CVV:<input id="cvv" name="CVV" value="999" /><p>
+        DATETIME:<input id='datetime' name="DATETIME" value="" /><p> <!-- 03-10-2017:09:43:01:673 -->
+	<script type="text/javascript"> 
+	  document.getElementById("datetime").value = moment().format('DD-MM-YYYY:hh:mm:ss:SSS');
+	</script>
+
+        HASH:<input id="hash" name="HASH" value="" />
+        <input type="button" value="Hash" onClick="document.getElementById('hash').value=sha512(getHashString())"/><p>
+        SECRET:<input id="secret" value="someSecretPhrase"/><p>
+	<input type="submit" value="Check Now" />
+
+    </form>
+</body>
+<html>

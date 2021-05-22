@@ -1,0 +1,111 @@
+{
+  "Hdr": {
+    "MsgFct": "FAUQ",
+    "PrtcolVrsn": "01.01",
+    "XchgId": 2561512,
+    "CreDtTm": "2021-04-01T15:27:13.876Z",
+    "InitgPty": {
+      "PtyId": "g1p"
+    }
+  },
+  "AuthstnReq": {
+    "Envt": {
+      "Acqrr": {
+        "AcqrrId": "9122"
+      },
+      "Mrchnt": {
+        "MrchntId": "7800187625",
+        "LctnAndCtct": {
+          "CstmrSvc": "5508044247213"
+        },
+        "SchmeData": {},
+        "CmonNm": "merchant_go"
+      },
+      "POI": {
+        "POIId": "11000811",
+        "Cpblties": {
+          "CardRdngCpblties": [
+            "KEYD"
+          ],
+          "CrdhldrVrfctnCpblties": [],
+          "PINLngthCpblties": "0",
+          "ApprvlCdLngth": 6,
+          "CardCaptrCpbl": 0,
+          "CardWrtngCpblties": [],
+          "MsgCpblties": []
+        }
+      },
+      "Card": {
+        "PlainCardData": {
+          "PAN": "401200******0071",
+          "XpryDt": "2023-04",
+          "CrdhldrNm": "Meta Will"
+        },
+        "CardBrnd": "VISA"
+      },
+      "Crdhldr": {
+        "Id": {
+          "FrstNm": "Meta",
+          "LstNm": "Will",
+          "EmailAdr": "Dorothy55@gmail.com"
+        },
+        "BllgAdr": {
+          "AdrLine": [
+            "sdlkjfalks",
+            "lksdjflksdj"
+          ],
+          "PstCd": "923878498"
+        },
+        "Authntcn": [
+          {
+            "AuthntcnMtd": "CSCV",
+            "AuthntcnVal": "XXX",
+            "CSCMngmnt": "CSCP"
+          },
+          {
+            "AuthntcnMtd": "ADDB"
+          },
+          {
+            "AuthntcnMtd": "3DSC",
+            "AuthntcnVal": "AJkBCQIGiIYplVGQaQaIAAAAAAA=",
+            "AuthntcnTp": "EMVC",
+            "AuthntcnRslt": "CRPT",
+            "AuthntcnTxId": "52c70ce5-c06b-431b-a1ce-85a934ad01a5"
+          }
+        ]
+      }
+    },
+    "Cntxt": {
+      "PmtCntxt": {
+        "CardPres": 0,
+        "CrdhldrPres": 0,
+        "AttndncCntxt": "UATT",
+        "TxEnvt": "PUBL",
+        "TxChanl": "ECOM",
+        "CardDataNtryMd": "MANU"
+      },
+      "SaleCntxt": {
+        "PurchsOrdrNb": "HPP54633"
+      }
+    },
+    "Tx": {
+      "TxCaptr": "1",
+      "TxTp": "CRDP",
+      "AddtlSvc": [
+        "UCOF"
+      ],
+      "SvcAttr": "ICOF",
+      "MrchntCtgyCd": "6995",
+      "SaleRefId": "2561512",
+      "TxId": {
+        "TxDt": "2021-04-01T15:27:13.883Z",
+        "TxRef": "561512"
+      },
+      "RcncltnId": "1",
+      "TxDtls": {
+        "CcyCd": "USD",
+        "TtlAmt": "10.00"
+      }
+    }
+  }
+}}

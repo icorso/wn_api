@@ -1,0 +1,88 @@
+{
+  "AccptrAuthstnReq": {
+    "Hdr": {
+      "MsgFct": "FAUQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2560023,
+      "CreDtTm": "2021-03-09T12:35:27.227Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "8494"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187614",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "78901619",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "425399******9197",
+            "XpryDt": "2024-11",
+            "CrdhldrNm": "Scott Olson"
+          },
+          "CardBrnd": "VISA"
+        },
+        "Crdhldr": {
+          "Authntcn": [
+            {
+              "AuthntcnMtd": "CSCV",
+              "AuthntcnVal": "XXX",
+              "CSCMngmnt": "CSCP"
+            }
+          ]
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "XML_6512751"
+        }
+      },
+      "Tx": {
+        "TxCaptr": "1",
+        "TxTp": "CRDP",
+        "MrchntCtgyCd": "6995",
+        "SaleRefId": "2560023",
+        "TxId": {
+          "TxDt": "2021-03-09T12:35:27.228Z",
+          "TxRef": "560023"
+        },
+        "RcncltnId": "8",
+        "TxDtls": {
+          "CcyCd": "CAD",
+          "TtlAmt": "4.21",
+          "UattnddLvlCtgy": "LVL6"
+        }
+      }
+    }
+  }
+}

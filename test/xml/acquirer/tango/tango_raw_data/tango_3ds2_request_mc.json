@@ -1,0 +1,103 @@
+{
+  "AccptrAuthstnReq": {
+    "Hdr": {
+      "MsgFct": "FAUQ",
+      "PrtcolVrsn": "01.01",
+      "XchgId": 2561513,
+      "CreDtTm": "2021-04-01T15:35:52.737Z",
+      "InitgPty": {
+        "PtyId": "g1p"
+      }
+    },
+    "AuthstnReq": {
+      "Envt": {
+        "Acqrr": {
+          "AcqrrId": "9122"
+        },
+        "Mrchnt": {
+          "MrchntId": "7800187625",
+          "LctnAndCtct": {
+            "CstmrSvc": "5508044247213"
+          },
+          "SchmeData": {},
+          "CmonNm": "merchant_go"
+        },
+        "POI": {
+          "POIId": "11000811",
+          "Cpblties": {
+            "CardRdngCpblties": [
+              "KEYD"
+            ],
+            "CrdhldrVrfctnCpblties": [],
+            "PINLngthCpblties": "0",
+            "ApprvlCdLngth": 6,
+            "CardCaptrCpbl": 0,
+            "CardWrtngCpblties": [],
+            "MsgCpblties": []
+          }
+        },
+        "Card": {
+          "PlainCardData": {
+            "PAN": "510027******0023",
+            "XpryDt": "2025-03",
+            "CrdhldrNm": "Roy Stracke V"
+          },
+          "CardBrnd": "MC"
+        },
+        "Crdhldr": {
+          "Id": {
+            "FrstNm": "Roy",
+            "LstNm": "Stracke V",
+            "EmailAdr": "Lauretta_Quigley@yahoo.com"
+          },
+          "Authntcn": [
+            {
+              "AuthntcnMtd": "CSCV",
+              "AuthntcnVal": "XXX",
+              "CSCMngmnt": "CSCP"
+            },
+            {
+              "AuthntcnMtd": "3DSC",
+              "AuthntcnVal": "kGkBAGaAYwdYQHEHFIBjAAAAAAA=",
+              "AuthntcnTp": "EMVC",
+              "AuthntcnRslt": "CRPT",
+              "AuthntcnTxId": "be832ded-27aa-4388-b430-9f3bfa3a5993"
+            }
+          ]
+        }
+      },
+      "Cntxt": {
+        "PmtCntxt": {
+          "CardPres": 0,
+          "CrdhldrPres": 0,
+          "AttndncCntxt": "UATT",
+          "TxEnvt": "PUBL",
+          "TxChanl": "ECOM",
+          "CardDataNtryMd": "MANU"
+        },
+        "SaleCntxt": {
+          "PurchsOrdrNb": "HPP99538"
+        }
+      },
+      "Tx": {
+        "TxCaptr": "1",
+        "TxTp": "CRDP",
+        "AddtlSvc": [
+          "UCOF"
+        ],
+        "SvcAttr": "ICOF",
+        "MrchntCtgyCd": "6995",
+        "SaleRefId": "2561513",
+        "TxId": {
+          "TxDt": "2021-04-01T15:35:52.739Z",
+          "TxRef": "561513"
+        },
+        "RcncltnId": "1",
+        "TxDtls": {
+          "CcyCd": "USD",
+          "TtlAmt": "7.00"
+        }
+      }
+    }
+  }
+}

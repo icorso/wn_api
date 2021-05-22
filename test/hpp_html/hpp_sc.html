@@ -1,0 +1,88 @@
+<html>
+<head>
+<!--
+https://github.com/emn178/js-sha512
+https://github.com/Marak/faker.js/blob/master/doc/
+-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.7.1/sha512.js"></script>
+	<script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+	<script type="text/javascript">
+		function getHashString() {
+			// TERMINALID:MERCHANTREF:DATETIME:ACTION:SECRET
+			var hashFields = ['terminalid', 'merchantref', 'datetime', 'action']
+
+			var hashString = ""
+
+			hashFields.forEach(function(item, i, hashFields) {
+				hashValue = document.getElementById(item).value
+				if (hashValue) {
+					hashValue = hashValue + ":"
+				}
+				hashString = hashString + hashValue
+			});
+			hashString = hashString + document.getElementById('secret').value
+			console.log(hashString)
+			return hashString
+		}
+	</script>
+</head>
+<body>
+    <form action="" method="post">
+        SERVER:<p><select size="6" onChange="this.form.action=this.options[this.selectedIndex].value;">
+          <option value="https://qawslynxwn.worldnettps.com/merchant/securecardpage">https://qawslynxwn.worldnettps.com/merchant/securecardpage</option>
+          <option value="https://qawslynxgo.worldnettps.com/merchant/securecardpage">https://qawslynxgo.worldnettps.com/merchant/securecardpage</option>
+          <option value="https://qawsirongo.worldnettps.com/merchant/securecardpage">https://qawsirongo.worldnettps.com/merchant/securecardpage</option>
+          <option value="https://vagrant.wntps.com/merchant/securecardpage">https://vagrant.wntps.com/merchant/securecardpage</option>
+          <option value="https://lpivotal.wntps.com/merchant/securecardpage">https://lpivotal.wntps.com/merchant/securecardpage</option>
+          <option value="https://lpayconex.wntps.com/merchant/securecardpage">https://lpayconex.wntps.com/merchant/securecardpage</option>
+	</select><p>
+        ACTION:<input id="action" name="ACTION" value="register"/><p>
+        TERMINALID:<input id="terminalid" name="TERMINALID" value="22003"/><p>
+        MERCHANTREF:<input id="merchantref" name="MERCHANTREF" value=""/><p>
+	<script type="text/javascript"> 
+		document.getElementById('merchantref').value = "SMR" + faker.random.number();
+	</script>
+        DATETIME:<input id='datetime' name="DATETIME" value="" /><p> <!-- 03-10-2017:09:43:01:673 -->
+	<script type="text/javascript"> 
+	  document.getElementById("datetime").value = moment().format('DD-MM-YYYY:hh:mm:ss:SSS');
+	</script>
+
+        HASH:<input id="hash" name="HASH" value="" />
+        <input type="button" value="Hash" onClick="document.getElementById('hash').value=sha512(getHashString())"/><p>
+        INIFRAME:<select size="2" name="INIFRAME">
+        <option value="N" selected>N</option>>
+        <option value="Y">Y</option></select>
+        <p>
+        EMAIL:<input name="EMAIL" value="test_cardholder@local.host" /><p>
+        SECRET:<input id="secret" value="someSecretPhrase"/><p>
+	RECEIPTPAGEURL: <input id="receiptpageurl" name="RECEIPTPAGEURL" value=""/><p>
+        STOREDCREDENTIALUSE:<p/><select size="5" name="STOREDCREDENTIALUSE">
+          <option selected value="UNSCHEDULED">UNSCHEDULED</option>
+          <option value="INSTALLMENT">INSTALLMENT</option>
+          <option value="RECURRING">RECURRING</option>
+          <option value=""></option>
+          <option value="INCORRECT">INCORRECT</option>
+        </select><p>
+        STOREDCREDENTIALTXTYPE:<p/><select size="5" name="STOREDCREDENTIALTXTYPE">
+          <option selected value="FIRST_TXN">FIRST_TXN</option>
+          <option value="SUBSEQUENT_MERCHANT_INITIATED_TXN">SUBSEQUENT_MERCHANT_INITIATED_TXN</option>
+          <option value="SUBSEQUENT_CARDHOLDER_INITIATED_TXN">SUBSEQUENT_CARDHOLDER_INITIATED_TXN</option>
+          <option value=""></option>
+          <option value="INCORRECT">INCORRECT</option>
+        </select><p>
+<!--
+        <strike>ORIGINALBRANDTXIDENTIFIER:<input name="ORIGINALBRANDTXIDENTIFIER" id="originalbrandtxidentifier" value=""/></strike><p>
+        <strike>CREDENTIALONFILE:<input name="CREDENTIALONFILE" id='credentialonfile' value=""/></strike></p>
+        <strike>STOREDCREDENTIALTXTYPE:<p/><select size="5" name="STOREDCREDENTIALTXTYPE">
+          <option value="FIRST_TXN">FIRST_TXN</option>
+          <option value="SUBSEQUENT_MERCHANT_INITIATED_TXN">SUBSEQUENT_MERCHANT_INITIATED_TXN</option>
+          <option value="SUBSEQUENT_CARDHOLDER_INITIATED_TXN">SUBSEQUENT_CARDHOLDER_INITIATED_TXN</option>
+          <option value=""></option>
+          <option value="INCORRECT">INCORRECT</option>
+        </select></strike><p>
+-->
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+<html>
